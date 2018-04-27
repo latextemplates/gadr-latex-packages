@@ -22,7 +22,7 @@ Needs some configuration:
 ```
 
 - Good, because uses PDF features
-- Bad, because highliting of words is not supported
+- Good, because highliting of words is not supported
 
 ### pdfmarginpar
 
