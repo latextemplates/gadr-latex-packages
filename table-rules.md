@@ -7,9 +7,9 @@ and dated. How should horizontal rules in tables be drawn?
 
 ## Considered Options
 
-* default `\hline` / `\cline`
-* [booktabs](https://ctan.org/pkg/booktabs)
-* [tabularray](https://ctan.org/pkg/tabularray)
+- default `\hline` / `\cline`
+- [booktabs](https://ctan.org/pkg/booktabs)
+- [tabularray](https://ctan.org/pkg/tabularray)
 
 ## Pros and Cons of the Options
 

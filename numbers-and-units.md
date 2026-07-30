@@ -8,9 +8,9 @@ decimal marker. How should numbers and units be typeset?
 
 ## Considered Options
 
-* manual math mode (`$3.5\,\mathrm{kg}$`)
-* [siunitx](https://ctan.org/pkg/siunitx)
-* [units](https://ctan.org/pkg/units) / SIunits (older, superseded)
+- manual math mode (`$3.5\,\mathrm{kg}$`)
+- [siunitx](https://ctan.org/pkg/siunitx)
+- [units](https://ctan.org/pkg/units) / SIunits (older, superseded)
 
 ## Pros and Cons of the Options
 

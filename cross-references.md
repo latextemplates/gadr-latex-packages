@@ -8,10 +8,10 @@ cross-references be written?
 
 ## Considered Options
 
-* manual `Figure~\ref{...}`
-* [hyperref](https://ctan.org/pkg/hyperref)'s `\autoref`
-* [cleveref](https://ctan.org/pkg/cleveref)
-* [varioref](https://ctan.org/pkg/varioref) (complementary, page-aware)
+- manual `Figure~\ref{...}`
+- [hyperref](https://ctan.org/pkg/hyperref)'s `\autoref`
+- [cleveref](https://ctan.org/pkg/cleveref)
+- [varioref](https://ctan.org/pkg/varioref) (complementary, page-aware)
 
 ## Pros and Cons of the Options
 

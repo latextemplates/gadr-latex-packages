@@ -8,9 +8,9 @@ Which package should typeset code listings?
 
 ## Considered Options
 
-* [listings](https://ctan.org/pkg/listings)
-* [minted](https://ctan.org/pkg/minted)
-* [fancyvrb](https://ctan.org/pkg/fancyvrb) (verbatim only, no highlighting)
+- [listings](https://ctan.org/pkg/listings)
+- [minted](https://ctan.org/pkg/minted)
+- [fancyvrb](https://ctan.org/pkg/fancyvrb) (verbatim only, no highlighting)
 
 ## Pros and Cons of the Options
 

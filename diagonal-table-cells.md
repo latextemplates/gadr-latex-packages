@@ -7,9 +7,9 @@ split by a diagonal line. How to draw a diagonally divided header cell?
 
 ## Considered Options
 
-* [diagbox](https://ctan.org/pkg/diagbox)
-* slashbox (obsolete)
-* manual TikZ
+- [diagbox](https://ctan.org/pkg/diagbox)
+- slashbox (obsolete)
+- manual TikZ
 
 ## Pros and Cons of the Options
 

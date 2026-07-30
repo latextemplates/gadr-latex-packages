@@ -7,9 +7,9 @@ visually separate from the running text. How should margin notes be placed?
 
 ## Considered Options
 
-* built-in `\marginpar`
-* [marginnote](https://ctan.org/pkg/marginnote)
-* [mindflow](https://ctan.org/pkg/mindflow)
+- built-in `\marginpar`
+- [marginnote](https://ctan.org/pkg/marginnote)
+- [mindflow](https://ctan.org/pkg/mindflow)
 
 ## Pros and Cons of the Options
 

@@ -8,9 +8,9 @@ paragraph ((a) one, (b) two), reads better. How to get compact and inline lists?
 
 ## Considered Options
 
-* standard environments (no extra package)
-* [paralist](https://ctan.org/pkg/paralist)
-* [enumitem](https://ctan.org/pkg/enumitem)
+- standard environments (no extra package)
+- [paralist](https://ctan.org/pkg/paralist)
+- [enumitem](https://ctan.org/pkg/enumitem)
 
 ## Pros and Cons of the Options
 

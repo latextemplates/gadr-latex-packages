@@ -8,10 +8,10 @@ managed?
 
 ## Considered Options
 
-* manual first-use tracking
-* [acronym](https://ctan.org/pkg/acronym)
-* [glossaries](https://ctan.org/pkg/glossaries) / [glossaries-extra](https://ctan.org/pkg/glossaries-extra)
-* [acro](https://ctan.org/pkg/acro)
+- manual first-use tracking
+- [acronym](https://ctan.org/pkg/acronym)
+- [glossaries](https://ctan.org/pkg/glossaries) / [glossaries-extra](https://ctan.org/pkg/glossaries-extra)
+- [acro](https://ctan.org/pkg/acro)
 
 ## Pros and Cons of the Options
 

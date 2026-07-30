@@ -8,9 +8,9 @@ tuning. How should hyphenation be controlled?
 
 ## Considered Options
 
-* automatic hyphenation + manual `\-` / `\hyphenation{}`
-* [microtype](https://ctan.org/pkg/microtype)
-* babel / language hyphenation patterns
+- automatic hyphenation + manual `\-` / `\hyphenation{}`
+- [microtype](https://ctan.org/pkg/microtype)
+- babel / language hyphenation patterns
 
 ## Pros and Cons of the Options
 

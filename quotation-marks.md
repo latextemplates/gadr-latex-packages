@@ -8,9 +8,9 @@ typeset?
 
 ## Considered Options
 
-* hard-coded glyphs (`` ``...'' ``)
-* [csquotes](https://ctan.org/pkg/csquotes)
-* [textcmds](https://ctan.org/pkg/textcmds) (`\qq`)
+- hard-coded glyphs (`` ``...'' ``)
+- [csquotes](https://ctan.org/pkg/csquotes)
+- [textcmds](https://ctan.org/pkg/textcmds) (`\qq`)
 
 ## Pros and Cons of the Options
 
