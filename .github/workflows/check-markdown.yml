@@ -1,0 +1,30 @@
+name: check-markdown
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+concurrency:
+  group: "${{ github.workflow }}-${{ github.head_ref || github.ref }}"
+  cancel-in-progress: true
+permissions:
+  contents: read
+  checks: write
+  pull-requests: write
+jobs:
+  vale:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v7
+      # Report-only: annotate every finding in all *.md files (not just the
+      # diff), but never fail the job. Rules in .vale.ini, vocabulary in
+      # .vale/styles/config/vocabularies/Docs/accept.txt.
+      - name: Lint the Markdown files with Vale
+        uses: vale-cli/vale-action@v3.0.0
+        with:
+          files: all
+          reporter: github-check
+          filter_mode: nofilter
+          fail_on_error: false

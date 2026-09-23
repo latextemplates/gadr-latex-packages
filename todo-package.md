@@ -29,7 +29,7 @@ Needs some configuration:
 ```
 
 - Good, because uses PDF features
-- Good, because highliting of words is not supported
+- Good, because highlighting of words is not supported
 
 ### pdfmarginpar
 
@@ -38,5 +38,5 @@ Needs some configuration:
   Reasons were:
   a) acrobat reader does not allow editing comments made by pdfcomment
   b) ideas were incorporated at pdfcomment
-- Bad, because highliting of words is not supported
+- Bad, because highlighting of words is not supported
 - Bad, because uses GPL as license
