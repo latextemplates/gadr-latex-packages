@@ -19,9 +19,9 @@ if ! kpsewhich tikz-uml.sty > /dev/null 2>&1 && [ ! -f tikz-uml.sty ]; then
   fetched_tikzuml=true
 fi
 
-# ltMermaid is not part of TeX Live: fetch it temporarily; its MWEs need the Mermaid CLI and --shell-escape
+# The ltMermaid MWEs need the Mermaid CLI and --shell-escape; ltMermaid is part of TeX Live 2026, older TeX Live versions get it temporarily
 fetched_ltmermaid=false
-if command -v mmdc > /dev/null && [ ! -f ltmermaid.sty ]; then
+if command -v mmdc > /dev/null && ! kpsewhich ltmermaid.sty > /dev/null 2>&1 && [ ! -f ltmermaid.sty ]; then
   curl -sSfL -o ltmermaid.sty https://raw.githubusercontent.com/ryoya9826/ltMermaid/main/ltmermaid.sty
   fetched_ltmermaid=true
 fi

@@ -16,7 +16,7 @@ How should UML diagrams be drawn?
 - [pst-uml](https://ctan.org/pkg/pst-uml) (PSTricks)
 - [pgf-umlcd](https://ctan.org/pkg/pgf-umlcd) and [pgf-umlsd](https://ctan.org/pkg/pgf-umlsd) (TikZ)
 - [tikz-uml](https://perso.ensta-paris.fr/~kielbasi/tikzuml/) (TikZ, not part of TeX Live)
-- [Mermaid](https://mermaid.js.org/) via [ltMermaid](https://github.com/ryoya9826/ltMermaid) (not part of TeX Live)
+- [Mermaid](https://mermaid.js.org/) via [ltMermaid](https://ctan.org/pkg/ltmermaid)
 - [uml](https://ctan.org/pkg/uml) (PSTricks)
 - drawing with an external tool (e.g., draw.io) and including the PDF
 
@@ -25,7 +25,7 @@ How should UML diagrams be drawn?
 The minimal working examples (MWEs) are the diagrams of the examples of the [plantuml package](https://github.com/koppor/plantuml).
 Each diagram is rebuilt with every package that supports the diagram type.
 tikz-uml is taken from its [git repository](https://plmlab.math.cnrs.fr/tikzuml/tikzuml) (commit 4d6aaba of 2026-05-28).
-ltMermaid is taken from its [git repository](https://github.com/ryoya9826/ltMermaid) (commit 33d2eba of 2026-05-14); its MWEs need `--shell-escape` and the Mermaid CLI 11.17.0.
+The ltMermaid MWEs (ltMermaid 1.0c) need `--shell-escape` and the Mermaid CLI; they were rendered with Mermaid CLI 11.17.0.
 Sources and images are in [uml-diagrams/](uml-diagrams/).
 All LaTeX sources were compiled with LuaLaTeX of TeX Live 2026 *without* `--shell-escape`; the PlantUML images were rendered by PlantUML 1.2026.8.
 
@@ -36,14 +36,14 @@ All LaTeX sources were compiled with LuaLaTeX of TeX Live 2026 *without* `--shel
 | Class visibility | ![class visibility, PlantUML](uml-diagrams/class-visibility--plantuml.png) | ![class visibility, MetaUML](uml-diagrams/class-visibility--metauml.png) | ![class visibility, pgf-umlcd](uml-diagrams/class-visibility--pgf-umlcd.png) | ![class visibility, pst-uml](uml-diagrams/class-visibility--pst-uml.png) | ![class visibility, tikz-uml](uml-diagrams/class-visibility--tikz-uml.png) | ![class visibility, Mermaid](uml-diagrams/class-visibility--ltmermaid.png) |
 | Components | ![component, PlantUML](uml-diagrams/component--plantuml.png) | ![component, MetaUML](uml-diagrams/component--metauml.png) | not supported | not supported | ![component, tikz-uml](uml-diagrams/component--tikz-uml.png) | not supported |
 
-| | LuaLaTeX | pdfLaTeX |
-| -- | -- | -- |
-| PlantUML | `--shell-escape`, Java, PlantUML | `--shell-escape`, Java, PlantUML |
-| MetaUML | built in ([luamplib](https://ctan.org/pkg/luamplib)) | `--shell-escape` ([gmp](https://ctan.org/pkg/gmp)) |
-| pgf-umlcd / pgf-umlsd | works | works |
-| pst-uml | built in ([luapstricks](https://ctan.org/pkg/luapstricks)) | `--shell-escape` ([auto-pst-pdf](https://ctan.org/pkg/auto-pst-pdf)) |
-| tikz-uml | works | works |
-| Mermaid (ltMermaid) | `--shell-escape`, Mermaid CLI (Node.js, headless Chromium) | `--shell-escape`, Mermaid CLI (`mermaid` package of ltMermaid) |
+| | LuaLaTeX | pdfLaTeX | [TeX Live Docker image](https://gitlab.com/islandoftex/images/texlive) |
+| -- | -- | -- | -- |
+| PlantUML | `--shell-escape`, Java, PlantUML | `--shell-escape`, Java, PlantUML | no: contains Java and `plantuml.sty`, but not PlantUML and Graphviz |
+| MetaUML | built in ([luamplib](https://ctan.org/pkg/luamplib)) | `--shell-escape` ([gmp](https://ctan.org/pkg/gmp)) | yes |
+| pgf-umlcd / pgf-umlsd | works | works | yes |
+| pst-uml | built in ([luapstricks](https://ctan.org/pkg/luapstricks)) | `--shell-escape` ([auto-pst-pdf](https://ctan.org/pkg/auto-pst-pdf)) | yes |
+| tikz-uml | works | works | no: tikz-uml is not part of TeX Live |
+| Mermaid (ltMermaid) | `--shell-escape`, Mermaid CLI (Node.js, headless Chromium) | `--shell-escape`, Mermaid CLI (`mermaid` package of ltMermaid) | no: contains ltMermaid, but not the Mermaid CLI, Node.js, and Chromium |
 
 ## Syntax
 
@@ -93,7 +93,7 @@ Mermaid draws it with `+`/`-` at the arrows; `mirrorActors: false` in the front 
 - Good, because the diagrams are written in a compact text notation and laid out automatically.
 - Good, because it supports all diagram types of UML (and more, e.g., mind maps).
 - Bad, because it needs Java, PlantUML (and Graphviz for some diagrams), and `--shell-escape`.
-- Bad, because neither the Docker image of TeX Live nor Overleaf ship PlantUML.
+- Bad, because neither the [TeX Live Docker image](https://gitlab.com/islandoftex/images/texlive) nor Overleaf ship PlantUML (the Docker image contains Java and `plantuml.sty`, but not PlantUML and Graphviz).
 
 ### MetaUML
 
@@ -147,10 +147,10 @@ Both run `latex`, `dvips`, and `ps2pdf` on the PSTricks pictures and include the
 - Good, because the [Mermaid](https://mermaid.js.org/) syntax is as compact as PlantUML's, and the layout is automatic.
 - Good, because Mermaid is widespread (e.g., rendered by GitHub and GitLab in Markdown), so the diagram source can be reused outside LaTeX.
 - Good, because ltMermaid supports pdfLaTeX, XeLaTeX, and LuaLaTeX (`mermaid` resp. `ltmermaid` package).
-- Bad, because it needs `--shell-escape` and the Mermaid CLI (`mmdc`), which needs Node.js and a headless Chromium.
+- Bad, because it needs `--shell-escape` and the Mermaid CLI (`mmdc`), which needs Node.js and a headless Chromium; the [TeX Live Docker image](https://gitlab.com/islandoftex/images/texlive) contains neither.
 - Bad, because the diagrams use the font and colors of Mermaid, not the font of the document.
 - Bad, because Mermaid has no UML component diagrams.
-- Bad, because ltMermaid is new (2026) and not part of TeX Live (nor CTAN).
+- Neutral, because ltMermaid is new (2026); it is part of TeX Live 2026.
 
 ### uml
 
