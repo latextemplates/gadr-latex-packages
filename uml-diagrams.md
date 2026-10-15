@@ -42,6 +42,20 @@ All LaTeX sources were compiled with LuaLaTeX of TeX Live 2026 *without* `--shel
 | pst-uml | built in ([luapstricks](https://ctan.org/pkg/luapstricks)) | `--shell-escape` ([auto-pst-pdf](https://ctan.org/pkg/auto-pst-pdf)) |
 | tikz-uml | works | works |
 
+## Syntax
+
+Lines of diagram code per MWE (without preamble, comments, and blank lines):
+
+| MWE | PlantUML | MetaUML | pgf-umlcd | pgf-umlsd | pst-uml | tikz-uml |
+| -- | -- | -- | -- | -- | -- | -- |
+| Sequence | 1 | not supported | not supported | 5 | not supported | 6 |
+| Class relations | 4 | 13 | 7 | not supported | 7 | 7 |
+| Class visibility | 9 | 2 (all members in one line) | 9 | not supported | 8 | 5 |
+| Components | 9 | 15 | not supported | not supported | not supported | 8 |
+
+PlantUML lays out the diagram automatically (via Graphviz), and a relation is a single arrow such as `Car *- Wheel : have 4 >`.
+All other packages need positions: coordinates (pgf-umlcd, pst-uml, tikz-uml) or offsets relative to other objects (MetaUML, e.g., `cTwo.w = cOne.e + (140, 40)`); MetaUML also needs the positions of the labels.
+
 ## Customization
 
 ### Sans-serif font

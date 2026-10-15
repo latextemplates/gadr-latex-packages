@@ -11,9 +11,12 @@ pair zTwo, zThree;
 Component.cOne("component 1")();
 Component.cTwo("component 2")();
 Component.cThree("component 3")();
+% MetaUML has no automatic layout: each object is placed relative to another one.
+% The left edge of component 2 (3) is 140 PostScript points (1/72 inch, about 5 cm) right of and 40 points above (below) the right edge of component 1.
 cTwo.w = cOne.e + (140, 40);
 cThree.w = cOne.e + (140, -40);
 drawObjects(cOne, cTwo, cThree);
+% The interfaces are halfway between the components.
 zTwo = cOne.e + (70, 40);
 zThree = cOne.e + (70, -40);
 link(providedInterface)(cOne.e -- zTwo);
