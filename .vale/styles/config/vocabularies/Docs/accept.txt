@@ -19,7 +19,7 @@ hyperref
 latextemplates
 ligatex
 ligtype
-ltMermaid
+(?i)ltmermaid
 luamplib
 luapstricks
 marginnote
