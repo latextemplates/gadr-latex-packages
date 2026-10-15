@@ -79,6 +79,13 @@ All MWEs above are typeset in a sans-serif font:
 - pgf-umlcd: an empty `class` environment still shows the empty compartments.
 - pst-uml: `\umlClass{Car}{}` shows the name only (see above).
 
+### Activation bars in sequence diagrams
+
+pgf-umlsd and tikz-uml draw an activation bar on the lifeline of the called object (see the comparison above).
+Mermaid draws it with `+`/`-` at the arrows; `mirrorActors: false` in the front matter omits the repeated boxes at the bottom (see [sequence--activation--ltmermaid.tex](uml-diagrams/sequence--activation--ltmermaid.tex)):
+
+![sequence with activation, Mermaid](uml-diagrams/sequence--activation--ltmermaid.png)
+
 ## Pros and Cons of the Options
 
 ### PlantUML
