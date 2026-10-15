@@ -3,18 +3,18 @@
 ## Context and Problem Statement
 
 Quotation marks differ by language (English "…", German „…", French « … »),
-they nest, and they should not be hard-coded glyphs. How should quotations be
+they nest, and they should not be hardcoded glyphs. How should quotations be
 typeset?
 
 ## Considered Options
 
-- hard-coded glyphs (`` ``...'' ``)
+- hardcoded glyphs (`` ``...'' ``)
 - [csquotes](https://ctan.org/pkg/csquotes)
 - [textcmds](https://ctan.org/pkg/textcmds) (`\qq`)
 
 ## Pros and Cons of the Options
 
-### hard-coded glyphs
+### hardcoded glyphs
 
 - Good, because it needs no package.
 - Bad, because it is wrong for any language whose marks differ from English, and nesting must be tracked by hand.

@@ -1,0 +1,8 @@
+{
+  "rules": {
+    "terminology": {
+      "exclude": ["to-?do(s)?(?=[ ,.])"]
+    },
+    "write-good": true
+  }
+}

@@ -15,7 +15,7 @@ and dated. How should horizontal rules in tables be drawn?
 
 ### default `\hline`
 
-- Good, because it is built in.
+- Good, because it is built-in.
 - Bad, because rules touch the text with no padding, double rules look heavy, and the common vertical-rule style is typographically poor.
 
 ### booktabs

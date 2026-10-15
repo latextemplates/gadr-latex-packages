@@ -16,7 +16,7 @@ tuning. How should hyphenation be controlled?
 
 ### `\-` and `\hyphenation{}`
 
-- Good, because they are built in and give exact control: a discretionary break with `\-`, or global exceptions with `\hyphenation{...}`.
+- Good, because they are built-in and give exact control: a discretionary break with `\-`, or global exceptions with `\hyphenation{...}`.
 - Bad, because they are manual — they fix individual words, not overall quality.
 
 ### microtype

@@ -1,0 +1,37 @@
+name: check-textlint
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+concurrency:
+  group: "${{ github.workflow }}-${{ github.head_ref || github.ref }}"
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  textlint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: Lint the Markdown files with textlint
+        run: |
+          # Report-only: textlint's built-in `github` formatter emits the
+          # ::error/::warning workflow-command annotations itself; the job never
+          # fails. Rules come from .textlintrc.json. The formatter prints
+          # absolute paths, so strip the workspace prefix to anchor the
+          # annotations to the files in the diff.
+          npx --yes \
+            --package textlint \
+            --package textlint-rule-terminology \
+            --package textlint-rule-write-good \
+            textlint --format github "**/*.md" \
+            | sed "s|${GITHUB_WORKSPACE}/||g" | tee annotations.txt || true
+          # Count findings only, not the ::group::/::endgroup:: lines.
+          count=$(grep -cE '^::(error|warning) ' annotations.txt || true)
+          echo "textlint reported ${count} finding(s) in the Markdown files." >> "$GITHUB_STEP_SUMMARY"
