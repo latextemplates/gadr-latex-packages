@@ -1,0 +1,15 @@
+\documentclass[border=4pt]{standalone}
+\usepackage{pgf-umlcd}
+\begin{document}
+\begin{tikzpicture}[font=\sffamily]
+  \begin{class}[text width=6cm]{BankAccount}{0,0}
+    \attribute{+ owner : String}
+    \attribute{\# balance : double}
+    \attribute{- pin : int}
+    \attribute{\textasciitilde{} auditTrail : List}
+    \operation{+ deposit(amount : double)}
+    \operation{\# applyInterest()}
+    \operation{- validatePin(pin : int)}
+  \end{class}
+\end{tikzpicture}
+\end{document}

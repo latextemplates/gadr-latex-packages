@@ -1,0 +1,41 @@
+\documentclass[border=4pt]{standalone}
+\usepackage{luamplib}
+% Typeset all MetaUML labels with TeX, i.e., in the font of the document
+\mplibtextextlabel{enable}
+\begin{document}
+\sffamily
+\begin{mplibcode}
+input metauml;
+% MetaUML draws the compartment lines also for classes without members (iClassNameOnly);
+% draw them only if the class shows attributes or methods
+vardef Class_paintSkin@# =
+  nameAttributeY := @#attributeStack.top;
+  attributeMethodY := @#methodStack.top;
+  drawObjectShade(@#);
+  fill Class_border.@# withcolor @#info.foreColor;
+  draw Class_border.@# withcolor @#info.borderColor;
+  if (@#info.iAttributeStack.top + @#info.iMethodStack.top) > 0:
+    draw (xpart @#nw, nameAttributeY)--(xpart @#se, nameAttributeY) withcolor @#info.borderColor;
+    draw (xpart @#nw, attributeMethodY)--(xpart @#se, attributeMethodY) withcolor @#info.borderColor;
+  fi
+enddef;
+beginfig(1);
+% iClassNameOnly: show the class name only, without (empty) attribute and method compartments
+EClass.Driver(iClassNameOnly)("Driver")()();
+EClass.Car(iClassNameOnly)("Car")()();
+EClass.Wheel(iClassNameOnly)("Wheel")()();
+EClass.Person(iClassNameOnly)("Person")()();
+% horizontal distance between the boxes: 90 PostScript points (1/72 inch, i.e., about 3.2 cm)
+leftToRight(90)(Driver, Car, Wheel);
+% vertical distance between the boxes: 70 PostScript points (about 2.5 cm)
+topToBottom(70)(Car, Person);
+drawObjects(Driver, Car, Wheel, Person);
+link(association)(Driver.e -- Car.w);
+item(iAssoc)("drives >")(obj.s = .5[Driver.e, Car.w]);
+link(composition)(Wheel.w -- Car.e);
+item(iAssoc)("have 4 >")(obj.s = .5[Car.e, Wheel.w]);
+link(association)(Car.s -- Person.n);
+item(iAssoc)("< owns")(obj.w = .5[Car.s, Person.n] + (5, 0));
+endfig;
+\end{mplibcode}
+\end{document}

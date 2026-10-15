@@ -1,0 +1,11 @@
+\documentclass[border=4pt]{standalone}
+\usepackage{pgf-umlsd}
+\begin{document}
+\sffamily
+\begin{sequencediagram}
+  \newthread{a}{Alice}
+  % [2]: horizontal gap (in cm) to the box of the previous instance; the default (0.2) leaves no room for the message label
+  \newinst[2]{b}{Bob}
+  \mess{a}{test}{b}
+\end{sequencediagram}
+\end{document}

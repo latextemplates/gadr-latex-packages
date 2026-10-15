@@ -1,0 +1,14 @@
+\documentclass[border=4pt]{standalone}
+\usepackage{tikz-uml}
+\begin{document}
+\sffamily
+\begin{tikzpicture}
+  \umlsimpleclass{Driver}
+  \umlsimpleclass[x=4]{Car}
+  \umlsimpleclass[x=8]{Wheel}
+  \umlsimpleclass[x=4, y=-3]{Person}
+  \umlassoc[arg1={drives $>$}, pos1=0.5]{Driver}{Car}
+  \umlcompo[arg={have 4 $>$}, pos=0.5]{Car}{Wheel}
+  \umlassoc[arg2={$<$ owns}, pos2=0.5]{Car}{Person}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,16 @@
+\documentclass[border=4pt]{standalone}
+\usepackage{pst-uml}
+% \umlClass sets the class name in \normalfont; the members stay in typewriter font
+\renewcommand{\familydefault}{\sfdefault}
+\begin{document}
+\begin{pspicture}(0,0)(6,4)
+  \rput(3,2){\umlClass{BankAccount}{%
+    + owner : String\\
+    \# balance : double\\
+    - pin : int\\
+    \textasciitilde{} auditTrail : List\\ \hline
+    + deposit(amount : double)\\
+    \# applyInterest()\\
+    - validatePin(pin : int)}}
+\end{pspicture}
+\end{document}

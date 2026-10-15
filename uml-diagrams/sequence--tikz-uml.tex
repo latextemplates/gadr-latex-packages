@@ -1,0 +1,13 @@
+\documentclass[border=4pt]{standalone}
+\usepackage{tikz-uml}
+\begin{document}
+\sffamily
+\begin{tikzpicture}
+  \begin{umlseqdiag}
+    \umlobject{Alice}
+    \umlobject[x=4]{Bob}
+    \begin{umlcall}[op=test]{Alice}{Bob}
+    \end{umlcall}
+  \end{umlseqdiag}
+\end{tikzpicture}
+\end{document}

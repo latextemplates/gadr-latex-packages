@@ -1,0 +1,11 @@
+@startuml
+class BankAccount {
+  +owner : String
+  #balance : double
+  -pin : int
+  ~auditTrail : List
+  +deposit(amount : double)
+  #applyInterest()
+  -validatePin(pin : int)
+}
+@enduml

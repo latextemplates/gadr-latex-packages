@@ -1,0 +1,27 @@
+\documentclass[border=4pt]{standalone}
+\usepackage{luamplib}
+% Typeset all MetaUML labels with TeX, i.e., in the font of the document
+\mplibtextextlabel{enable}
+\begin{document}
+\sffamily
+\begin{mplibcode}
+input metauml;
+beginfig(1);
+Class.Driver("Driver")()();
+Class.Car("Car")()();
+Class.Wheel("Wheel")()();
+Class.Person("Person")()();
+% horizontal distance between the boxes: 90 PostScript points (1/72 inch, i.e., about 3.2 cm)
+leftToRight(90)(Driver, Car, Wheel);
+% vertical distance between the boxes: 70 PostScript points (about 2.5 cm)
+topToBottom(70)(Car, Person);
+drawObjects(Driver, Car, Wheel, Person);
+link(association)(Driver.e -- Car.w);
+item(iAssoc)("drives >")(obj.s = .5[Driver.e, Car.w]);
+link(composition)(Wheel.w -- Car.e);
+item(iAssoc)("have 4 >")(obj.s = .5[Car.e, Wheel.w]);
+link(association)(Car.s -- Person.n);
+item(iAssoc)("< owns")(obj.w = .5[Car.s, Person.n] + (5, 0));
+endfig;
+\end{mplibcode}
+\end{document}
