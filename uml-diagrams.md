@@ -16,6 +16,7 @@ How should UML diagrams be drawn?
 - [pst-uml](https://ctan.org/pkg/pst-uml) (PSTricks)
 - [pgf-umlcd](https://ctan.org/pkg/pgf-umlcd) and [pgf-umlsd](https://ctan.org/pkg/pgf-umlsd) (TikZ)
 - [tikz-uml](https://perso.ensta-paris.fr/~kielbasi/tikzuml/) (TikZ, not part of TeX Live)
+- [Mermaid](https://mermaid.js.org/) via [ltMermaid](https://github.com/ryoya9826/ltMermaid) (not part of TeX Live)
 - [uml](https://ctan.org/pkg/uml) (PSTricks)
 - drawing with an external tool (e.g., draw.io) and including the PDF
 
@@ -24,15 +25,16 @@ How should UML diagrams be drawn?
 The minimal working examples (MWEs) are the diagrams of the examples of the [plantuml package](https://github.com/koppor/plantuml).
 Each diagram is rebuilt with every package that supports the diagram type.
 tikz-uml is taken from its [git repository](https://plmlab.math.cnrs.fr/tikzuml/tikzuml) (commit 4d6aaba of 2026-05-28).
+ltMermaid is taken from its [git repository](https://github.com/ryoya9826/ltMermaid) (commit 33d2eba of 2026-05-14); its MWEs need `--shell-escape` and the Mermaid CLI 11.17.0.
 Sources and images are in [uml-diagrams/](uml-diagrams/).
 All LaTeX sources were compiled with LuaLaTeX of TeX Live 2026 *without* `--shell-escape`; the PlantUML images were rendered by PlantUML 1.2026.8.
 
-| MWE | PlantUML (reference) | MetaUML | pgf-umlcd / pgf-umlsd | pst-uml | tikz-uml |
-| -- | -- | -- | -- | -- | -- |
-| Sequence | ![sequence, PlantUML](uml-diagrams/sequence--plantuml.png) | not supported | ![sequence, pgf-umlsd](uml-diagrams/sequence--pgf-umlsd.png) | not supported | ![sequence, tikz-uml](uml-diagrams/sequence--tikz-uml.png) |
-| Class relations | ![class relations, PlantUML](uml-diagrams/class-relations--plantuml.png) | ![class relations, MetaUML](uml-diagrams/class-relations--metauml.png) | ![class relations, pgf-umlcd](uml-diagrams/class-relations--pgf-umlcd.png) | ![class relations, pst-uml](uml-diagrams/class-relations--pst-uml.png) | ![class relations, tikz-uml](uml-diagrams/class-relations--tikz-uml.png) |
-| Class visibility | ![class visibility, PlantUML](uml-diagrams/class-visibility--plantuml.png) | ![class visibility, MetaUML](uml-diagrams/class-visibility--metauml.png) | ![class visibility, pgf-umlcd](uml-diagrams/class-visibility--pgf-umlcd.png) | ![class visibility, pst-uml](uml-diagrams/class-visibility--pst-uml.png) | ![class visibility, tikz-uml](uml-diagrams/class-visibility--tikz-uml.png) |
-| Components | ![component, PlantUML](uml-diagrams/component--plantuml.png) | ![component, MetaUML](uml-diagrams/component--metauml.png) | not supported | not supported | ![component, tikz-uml](uml-diagrams/component--tikz-uml.png) |
+| MWE | PlantUML (reference) | MetaUML | pgf-umlcd / pgf-umlsd | pst-uml | tikz-uml | Mermaid (ltMermaid) |
+| -- | -- | -- | -- | -- | -- | -- |
+| Sequence | ![sequence, PlantUML](uml-diagrams/sequence--plantuml.png) | not supported | ![sequence, pgf-umlsd](uml-diagrams/sequence--pgf-umlsd.png) | not supported | ![sequence, tikz-uml](uml-diagrams/sequence--tikz-uml.png) | ![sequence, Mermaid](uml-diagrams/sequence--ltmermaid.png) |
+| Class relations | ![class relations, PlantUML](uml-diagrams/class-relations--plantuml.png) | ![class relations, MetaUML](uml-diagrams/class-relations--metauml.png) | ![class relations, pgf-umlcd](uml-diagrams/class-relations--pgf-umlcd.png) | ![class relations, pst-uml](uml-diagrams/class-relations--pst-uml.png) | ![class relations, tikz-uml](uml-diagrams/class-relations--tikz-uml.png) | ![class relations, Mermaid](uml-diagrams/class-relations--ltmermaid.png) |
+| Class visibility | ![class visibility, PlantUML](uml-diagrams/class-visibility--plantuml.png) | ![class visibility, MetaUML](uml-diagrams/class-visibility--metauml.png) | ![class visibility, pgf-umlcd](uml-diagrams/class-visibility--pgf-umlcd.png) | ![class visibility, pst-uml](uml-diagrams/class-visibility--pst-uml.png) | ![class visibility, tikz-uml](uml-diagrams/class-visibility--tikz-uml.png) | ![class visibility, Mermaid](uml-diagrams/class-visibility--ltmermaid.png) |
+| Components | ![component, PlantUML](uml-diagrams/component--plantuml.png) | ![component, MetaUML](uml-diagrams/component--metauml.png) | not supported | not supported | ![component, tikz-uml](uml-diagrams/component--tikz-uml.png) | not supported |
 
 | | LuaLaTeX | pdfLaTeX |
 | -- | -- | -- |
@@ -41,19 +43,20 @@ All LaTeX sources were compiled with LuaLaTeX of TeX Live 2026 *without* `--shel
 | pgf-umlcd / pgf-umlsd | works | works |
 | pst-uml | built in ([luapstricks](https://ctan.org/pkg/luapstricks)) | `--shell-escape` ([auto-pst-pdf](https://ctan.org/pkg/auto-pst-pdf)) |
 | tikz-uml | works | works |
+| Mermaid (ltMermaid) | `--shell-escape`, Mermaid CLI (Node.js, headless Chromium) | `--shell-escape`, Mermaid CLI (`mermaid` package of ltMermaid) |
 
 ## Syntax
 
 Lines of diagram code per MWE (without preamble, comments, and blank lines):
 
-| MWE | PlantUML | MetaUML | pgf-umlcd | pgf-umlsd | pst-uml | tikz-uml |
-| -- | -- | -- | -- | -- | -- | -- |
-| Sequence | 1 | not supported | not supported | 5 | not supported | 6 |
-| Class relations | 4 | 13 | 7 | not supported | 7 | 7 |
-| Class visibility | 9 | 2 (all members in one line) | 9 | not supported | 8 | 5 |
-| Components | 9 | 15 | not supported | not supported | not supported | 8 |
+| MWE | PlantUML | MetaUML | pgf-umlcd | pgf-umlsd | pst-uml | tikz-uml | Mermaid |
+| -- | -- | -- | -- | -- | -- | -- | -- |
+| Sequence | 1 | not supported | not supported | 5 | not supported | 6 | 1 |
+| Class relations | 4 | 13 | 7 | not supported | 7 | 7 | 3 |
+| Class visibility | 9 | 2 (all members in one line) | 9 | not supported | 8 | 5 | 9 |
+| Components | 9 | 15 | not supported | not supported | not supported | 8 | not supported |
 
-PlantUML lays out the diagram automatically (via Graphviz), and a relation is a single arrow such as `Car *- Wheel : have 4 >`.
+PlantUML and Mermaid lay out the diagram automatically, and a relation is a single arrow such as `Car *- Wheel : have 4 >`.
 All other packages need positions: coordinates (pgf-umlcd, pst-uml, tikz-uml) or offsets relative to other objects (MetaUML, e.g., `cTwo.w = cOne.e + (140, 40)`); MetaUML also needs the positions of the labels.
 
 ## Customization
@@ -129,6 +132,16 @@ Both run `latex`, `dvips`, and `ps2pdf` on the PSTricks pictures and include the
 - Neutral, because the boxes are placed by coordinates (`x=`, `y=`).
 - Neutral, because the default colors (yellow boxes) need to be changed for a plain look.
 - Bad, because it is not part of TeX Live (nor CTAN); it has to be added, e.g., as git submodule (which Overleaf does not fetch).
+
+### Mermaid (ltMermaid)
+
+- Good, because the [Mermaid](https://mermaid.js.org/) syntax is as compact as PlantUML's, and the layout is automatic.
+- Good, because Mermaid is widespread (e.g., rendered by GitHub and GitLab in Markdown), so the diagram source can be reused outside LaTeX.
+- Good, because ltMermaid supports pdfLaTeX, XeLaTeX, and LuaLaTeX (`mermaid` resp. `ltmermaid` package).
+- Bad, because it needs `--shell-escape` and the Mermaid CLI (`mmdc`), which needs Node.js and a headless Chromium.
+- Bad, because the diagrams use the font and colors of Mermaid, not the font of the document.
+- Bad, because Mermaid has no UML component diagrams.
+- Bad, because ltMermaid is new (2026) and not part of TeX Live (nor CTAN).
 
 ### uml
 

@@ -1,0 +1,13 @@
+% varwidth: the mermaid environment reads its content verbatim and needs paragraph mode
+\documentclass[border=4pt,varwidth=20cm]{standalone}
+% ltmermaid calls the Mermaid CLI (mmdc) via --shell-escape and includes the resulting PDF.
+% puppeteer.json lets the headless Chromium of mmdc run without sandbox (needed, e.g., in containers).
+\usepackage[Renderer={mmdc -p puppeteer.json}]{ltmermaid}
+\begin{document}
+\begin{mermaid}
+classDiagram
+  Driver -- Car : drives >
+  Car *-- Wheel : have 4 >
+  Car -- Person : < owns
+\end{mermaid}
+\end{document}
