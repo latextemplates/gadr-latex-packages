@@ -1,0 +1,24 @@
+\documentclass[border=4pt]{standalone}
+\usepackage{luamplib}
+\begin{document}
+\begin{mplibcode}
+input metauml;
+beginfig(1);
+pair zTwo, zThree;
+Component.cOne("component 1")();
+Component.cTwo("component 2")();
+Component.cThree("component 3")();
+cTwo.w = cOne.e + (140, 40);
+cThree.w = cOne.e + (140, -40);
+drawObjects(cOne, cTwo, cThree);
+zTwo = cOne.e + (70, 40);
+zThree = cOne.e + (70, -40);
+link(providedInterface)(cOne.e -- zTwo);
+link(requiredInterface)(cTwo.w -- zTwo);
+item(iAssoc)("Interface 2")(obj.s = zTwo + (0, 8));
+link(providedInterface)(cOne.e -- zThree);
+link(requiredInterface)(cThree.w -- zThree);
+item(iAssoc)("Interface 3")(obj.n = zThree - (0, 8));
+endfig;
+\end{mplibcode}
+\end{document}

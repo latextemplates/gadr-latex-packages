@@ -1,0 +1,22 @@
+\documentclass[border=4pt]{standalone}
+\usepackage{luamplib}
+\begin{document}
+\begin{mplibcode}
+input metauml;
+beginfig(1);
+Class.Driver("Driver")()();
+Class.Car("Car")()();
+Class.Wheel("Wheel")()();
+Class.Person("Person")()();
+leftToRight(90)(Driver, Car, Wheel);
+topToBottom(70)(Car, Person);
+drawObjects(Driver, Car, Wheel, Person);
+link(association)(Driver.e -- Car.w);
+item(iAssoc)("drives >")(obj.s = .5[Driver.e, Car.w]);
+link(composition)(Wheel.w -- Car.e);
+item(iAssoc)("have 4 >")(obj.s = .5[Car.e, Wheel.w]);
+link(association)(Car.s -- Person.n);
+item(iAssoc)("< owns")(obj.w = .5[Car.s, Person.n] + (5, 0));
+endfig;
+\end{mplibcode}
+\end{document}
