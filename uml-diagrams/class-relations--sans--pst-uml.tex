@@ -1,0 +1,14 @@
+\documentclass[border=4pt]{standalone}
+\usepackage{pst-uml}
+\renewcommand{\familydefault}{\sfdefault}
+\begin{document}
+\begin{pspicture}(-1,-3.6)(11.5,0.6)
+  \rput(0,0){\rnode{D}{\umlClass{Driver}{}}}
+  \rput(5,0){\rnode{C}{\umlClass{Car}{}}}
+  \rput(10.5,0){\rnode{W}{\umlClass{Wheel}{}}}
+  \rput(5,-3){\rnode{P}{\umlClass{Person}{}}}
+  \ncline{D}{C}\naput{drives $>$}
+  \ncline{C}{W}\naput{have 4 $>$}\ncputicon[npos=0,nrot=:D]{umlCompos}
+  \ncline{C}{P}\naput{$<$ owns}
+\end{pspicture}
+\end{document}

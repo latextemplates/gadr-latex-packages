@@ -1,0 +1,10 @@
+\documentclass[border=4pt]{standalone}
+\usepackage{pgf-umlsd}
+\begin{document}
+\sffamily
+\begin{sequencediagram}
+  \newthread{a}{Alice}
+  \newinst[2]{b}{Bob}
+  \mess{a}{test}{b}
+\end{sequencediagram}
+\end{document}

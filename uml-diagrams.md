@@ -40,6 +40,23 @@ All LaTeX sources were compiled with LuaLaTeX of TeX Live 2026 *without* `--shel
 | pgf-umlcd / pgf-umlsd | works | works |
 | pst-uml | built in ([luapstricks](https://ctan.org/pkg/luapstricks)) | `--shell-escape` ([auto-pst-pdf](https://ctan.org/pkg/auto-pst-pdf)) |
 
+## Customization
+
+### Sans-serif font
+
+All packages can typeset the diagrams in a sans-serif font:
+
+| MetaUML | pgf-umlcd / pgf-umlsd | pst-uml |
+| -- | -- | -- |
+| ![](uml-diagrams/class-relations--sans--metauml.png) | ![](uml-diagrams/class-relations--sans--pgf-umlcd.png) ![](uml-diagrams/sequence--sans--pgf-umlsd.png) | ![](uml-diagrams/class-relations--sans--pst-uml.png) |
+| `\mplibtextextlabel{enable}` lets TeX typeset all MetaUML labels in the current font; `\sffamily` before `mplibcode` switches to sans serif. Without it, MetaUML uses Times (`metauml_defaultFont`). | `\begin{tikzpicture}[font=\sffamily]`; `\sffamily` before `sequencediagram` | `\renewcommand{\familydefault}{\sfdefault}`, because `\umlClass` resets the class name to `\normalfont`; the members stay in typewriter font. |
+
+### Hiding the members of a class
+
+- MetaUML: `EClass.Car(iClassNameOnly)("Car")()();` (or `ClassName.Car("Car");`). MetaUML still draws the lines of the (empty) compartments; redefining `Class_paintSkin` omits them (see [class-relations--sans--metauml.tex](uml-diagrams/class-relations--sans--metauml.tex)). A small empty space below the name remains.
+- pgf-umlcd: an empty `class` environment still shows the empty compartments.
+- pst-uml: `\umlClass{Car}{}` shows the name only.
+
 ## Pros and Cons of the Options
 
 ### PlantUML
@@ -53,8 +70,10 @@ All LaTeX sources were compiled with LuaLaTeX of TeX Live 2026 *without* `--shel
 
 - Good, because LuaLaTeX runs MetaPost itself ([luamplib](https://ctan.org/pkg/luamplib), `\begin{mplibcode}`): no external tool, no `--shell-escape`.
 - Good, because the result is closest to PlantUML: correct UML arrow heads (triangle, diamonds) and labels on the lines.
+- Good, because with `\mplibtextextlabel{enable}` the labels are typeset by TeX in the font of the document.
 - Good, because it supports class, package, component (with provided and required interfaces), use case, activity, and state diagrams.
-- Neutral, because the layout is given by relations between the objects (e.g., `leftToRight(90)(A, B)`), not by coordinates.
+- Neutral, because the layout is given by relations between the objects (e.g., `leftToRight(90)(A, B)`: 90 PostScript points between the boxes), not by coordinates.
+- Neutral, because hiding the members of a class (`iClassNameOnly`) leaves the compartment lines unless `Class_paintSkin` is redefined.
 - Bad, because it does not support sequence diagrams.
 - Bad, because with pdfLaTeX it needs [gmp](https://ctan.org/pkg/gmp) and `--shell-escape` (without it, `gmp` shows a placeholder).
 - Bad, because MetaPost syntax is unfamiliar to most LaTeX users (e.g., `c1` is the array element `c[1]` and cannot be used as name).
