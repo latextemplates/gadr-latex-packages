@@ -28,10 +28,10 @@ All LaTeX sources were compiled with LuaLaTeX of TeX Live 2026 *without* `--shel
 
 | MWE | PlantUML (reference) | MetaUML | pgf-umlcd / pgf-umlsd | pst-uml |
 | -- | -- | -- | -- | -- |
-| Sequence | ![](uml-diagrams/sequence--plantuml.png) | not supported | ![](uml-diagrams/sequence--pgf-umlsd.png) | not supported |
-| Class relations | ![](uml-diagrams/class-relations--plantuml.png) | ![](uml-diagrams/class-relations--metauml.png) | ![](uml-diagrams/class-relations--pgf-umlcd.png) | ![](uml-diagrams/class-relations--pst-uml.png) |
-| Class visibility | ![](uml-diagrams/class-visibility--plantuml.png) | ![](uml-diagrams/class-visibility--metauml.png) | ![](uml-diagrams/class-visibility--pgf-umlcd.png) | ![](uml-diagrams/class-visibility--pst-uml.png) |
-| Components | ![](uml-diagrams/component--plantuml.png) | ![](uml-diagrams/component--metauml.png) | not supported | not supported |
+| Sequence | ![sequence, PlantUML](uml-diagrams/sequence--plantuml.png) | not supported | ![sequence, pgf-umlsd](uml-diagrams/sequence--pgf-umlsd.png) | not supported |
+| Class relations | ![class relations, PlantUML](uml-diagrams/class-relations--plantuml.png) | ![class relations, MetaUML](uml-diagrams/class-relations--metauml.png) | ![class relations, pgf-umlcd](uml-diagrams/class-relations--pgf-umlcd.png) | ![class relations, pst-uml](uml-diagrams/class-relations--pst-uml.png) |
+| Class visibility | ![class visibility, PlantUML](uml-diagrams/class-visibility--plantuml.png) | ![class visibility, MetaUML](uml-diagrams/class-visibility--metauml.png) | ![class visibility, pgf-umlcd](uml-diagrams/class-visibility--pgf-umlcd.png) | ![class visibility, pst-uml](uml-diagrams/class-visibility--pst-uml.png) |
+| Components | ![component, PlantUML](uml-diagrams/component--plantuml.png) | ![component, MetaUML](uml-diagrams/component--metauml.png) | not supported | not supported |
 
 | | LuaLaTeX | pdfLaTeX |
 | -- | -- | -- |
@@ -44,16 +44,17 @@ All LaTeX sources were compiled with LuaLaTeX of TeX Live 2026 *without* `--shel
 
 ### Sans-serif font
 
-All packages can typeset the diagrams in a sans-serif font:
+All MWEs above are typeset in a sans-serif font:
 
-| MetaUML | pgf-umlcd / pgf-umlsd | pst-uml |
-| -- | -- | -- |
-| ![](uml-diagrams/class-relations--sans--metauml.png) | ![](uml-diagrams/class-relations--sans--pgf-umlcd.png) ![](uml-diagrams/sequence--sans--pgf-umlsd.png) | ![](uml-diagrams/class-relations--sans--pst-uml.png) |
-| `\mplibtextextlabel{enable}` lets TeX typeset all MetaUML labels in the current font; `\sffamily` before `mplibcode` switches to sans serif. Without it, MetaUML uses Times (`metauml_defaultFont`). | `\begin{tikzpicture}[font=\sffamily]`; `\sffamily` before `sequencediagram` | `\renewcommand{\familydefault}{\sfdefault}`, because `\umlClass` resets the class name to `\normalfont`; the members stay in typewriter font. |
+- MetaUML: `\mplibtextextlabel{enable}` lets TeX typeset all labels in the current font; `\sffamily` before `mplibcode` switches to sans serif. Without it, MetaUML uses Times (`metauml_defaultFont`).
+- pgf-umlcd: `\begin{tikzpicture}[font=\sffamily]`; pgf-umlsd: `\sffamily` before `sequencediagram`.
+- pst-uml: `\renewcommand{\familydefault}{\sfdefault}`, because `\umlClass` sets the class name in `\normalfont`; the members stay in typewriter font.
 
 ### Hiding the members of a class
 
-- MetaUML: `EClass.Car(iClassNameOnly)("Car")()();` (or `ClassName.Car("Car");`). MetaUML still draws the lines of the (empty) compartments; redefining `Class_paintSkin` omits them (see [class-relations--sans--metauml.tex](uml-diagrams/class-relations--sans--metauml.tex)). A small empty space below the name remains.
+- MetaUML: `EClass.Car(iClassNameOnly)("Car")()();` (or `ClassName.Car("Car");`). MetaUML still draws the lines of the (empty) compartments; redefining `Class_paintSkin` omits them (see [class-relations--name-only--metauml.tex](uml-diagrams/class-relations--name-only--metauml.tex)). A small empty space below the name remains:
+
+  ![class relations, name only, MetaUML](uml-diagrams/class-relations--name-only--metauml.png)
 - pgf-umlcd: an empty `class` environment still shows the empty compartments.
 - pst-uml: `\umlClass{Car}{}` shows the name only.
 
