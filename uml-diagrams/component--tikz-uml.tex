@@ -1,0 +1,15 @@
+\documentclass[border=4pt]{standalone}
+\usepackage{tikz-uml}
+\begin{document}
+\sffamily
+\begin{tikzpicture}
+  \begin{umlcomponent}{component 1}
+  \end{umlcomponent}
+  \begin{umlcomponent}[x=7, y=1.5]{component 2}
+  \end{umlcomponent}
+  \begin{umlcomponent}[x=7, y=-1.5]{component 3}
+  \end{umlcomponent}
+  \umlassemblyconnector[interface=Interface 2]{component 2}{component 1}
+  \umlassemblyconnector[interface=Interface 3]{component 3}{component 1}
+\end{tikzpicture}
+\end{document}

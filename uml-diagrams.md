@@ -23,15 +23,16 @@ How should UML diagrams be drawn?
 
 The minimal working examples (MWEs) are the diagrams of the examples of the [plantuml package](https://github.com/koppor/plantuml).
 Each diagram is rebuilt with every package that supports the diagram type.
+tikz-uml is taken from its [git repository](https://plmlab.math.cnrs.fr/tikzuml/tikzuml) (commit 4d6aaba of 2026-05-28).
 Sources and images are in [uml-diagrams/](uml-diagrams/).
 All LaTeX sources were compiled with LuaLaTeX of TeX Live 2026 *without* `--shell-escape`; the PlantUML images were rendered by PlantUML 1.2026.8.
 
-| MWE | PlantUML (reference) | MetaUML | pgf-umlcd / pgf-umlsd | pst-uml |
-| -- | -- | -- | -- | -- |
-| Sequence | ![sequence, PlantUML](uml-diagrams/sequence--plantuml.png) | not supported | ![sequence, pgf-umlsd](uml-diagrams/sequence--pgf-umlsd.png) | not supported |
-| Class relations | ![class relations, PlantUML](uml-diagrams/class-relations--plantuml.png) | ![class relations, MetaUML](uml-diagrams/class-relations--metauml.png) | ![class relations, pgf-umlcd](uml-diagrams/class-relations--pgf-umlcd.png) | ![class relations, pst-uml](uml-diagrams/class-relations--pst-uml.png) |
-| Class visibility | ![class visibility, PlantUML](uml-diagrams/class-visibility--plantuml.png) | ![class visibility, MetaUML](uml-diagrams/class-visibility--metauml.png) | ![class visibility, pgf-umlcd](uml-diagrams/class-visibility--pgf-umlcd.png) | ![class visibility, pst-uml](uml-diagrams/class-visibility--pst-uml.png) |
-| Components | ![component, PlantUML](uml-diagrams/component--plantuml.png) | ![component, MetaUML](uml-diagrams/component--metauml.png) | not supported | not supported |
+| MWE | PlantUML (reference) | MetaUML | pgf-umlcd / pgf-umlsd | pst-uml | tikz-uml |
+| -- | -- | -- | -- | -- | -- |
+| Sequence | ![sequence, PlantUML](uml-diagrams/sequence--plantuml.png) | not supported | ![sequence, pgf-umlsd](uml-diagrams/sequence--pgf-umlsd.png) | not supported | ![sequence, tikz-uml](uml-diagrams/sequence--tikz-uml.png) |
+| Class relations | ![class relations, PlantUML](uml-diagrams/class-relations--plantuml.png) | ![class relations, MetaUML](uml-diagrams/class-relations--metauml.png) | ![class relations, pgf-umlcd](uml-diagrams/class-relations--pgf-umlcd.png) | ![class relations, pst-uml](uml-diagrams/class-relations--pst-uml.png) | ![class relations, tikz-uml](uml-diagrams/class-relations--tikz-uml.png) |
+| Class visibility | ![class visibility, PlantUML](uml-diagrams/class-visibility--plantuml.png) | ![class visibility, MetaUML](uml-diagrams/class-visibility--metauml.png) | ![class visibility, pgf-umlcd](uml-diagrams/class-visibility--pgf-umlcd.png) | ![class visibility, pst-uml](uml-diagrams/class-visibility--pst-uml.png) | ![class visibility, tikz-uml](uml-diagrams/class-visibility--tikz-uml.png) |
+| Components | ![component, PlantUML](uml-diagrams/component--plantuml.png) | ![component, MetaUML](uml-diagrams/component--metauml.png) | not supported | not supported | ![component, tikz-uml](uml-diagrams/component--tikz-uml.png) |
 
 | | LuaLaTeX | pdfLaTeX |
 | -- | -- | -- |
@@ -39,6 +40,7 @@ All LaTeX sources were compiled with LuaLaTeX of TeX Live 2026 *without* `--shel
 | MetaUML | built in ([luamplib](https://ctan.org/pkg/luamplib)) | `--shell-escape` ([gmp](https://ctan.org/pkg/gmp)) |
 | pgf-umlcd / pgf-umlsd | works | works |
 | pst-uml | built in ([luapstricks](https://ctan.org/pkg/luapstricks)) | `--shell-escape` ([auto-pst-pdf](https://ctan.org/pkg/auto-pst-pdf)) |
+| tikz-uml | works | works |
 
 ## Customization
 
@@ -107,8 +109,12 @@ Both run `latex`, `dvips`, and `ps2pdf` on the PSTricks pictures and include the
 
 ### tikz-uml
 
-- Good, because it is pure TikZ and covers class, use case, state, component, and sequence diagrams.
-- Bad, because it is not part of TeX Live; it has to be added, e.g., as git submodule (which Overleaf does not fetch).
+- Good, because it is pure TikZ: it works with every engine, without `--shell-escape`.
+- Good, because it covers all diagram types of the comparison: class, component (with provided and required interfaces), and sequence diagrams; also use case and state diagrams.
+- Good, because it is actively developed.
+- Neutral, because the boxes are placed by coordinates (`x=`, `y=`).
+- Neutral, because the default colors (yellow boxes) need to be changed for a plain look.
+- Bad, because it is not part of TeX Live (nor CTAN); it has to be added, e.g., as git submodule (which Overleaf does not fetch).
 
 ### uml
 

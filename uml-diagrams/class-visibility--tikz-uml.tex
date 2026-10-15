@@ -1,0 +1,12 @@
+\documentclass[border=4pt]{standalone}
+\usepackage{tikz-uml}
+\begin{document}
+\sffamily
+\begin{tikzpicture}
+  \umlclass{BankAccount}{
+    + owner : String \\ \# balance : double \\ - pin : int \\ \textasciitilde{} auditTrail : List
+  }{
+    + deposit(amount : double) \\ \# applyInterest() \\ - validatePin(pin : int)
+  }
+\end{tikzpicture}
+\end{document}
