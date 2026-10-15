@@ -23,10 +23,12 @@ joined. TeX sets ligatures everywhere. How should wrong ligatures be avoided?
 - Good, because it suppresses ligatures exactly at the wrong places and keeps all others.
 - Good, because it supports English and German.
 - Bad, because it requires LuaLaTeX.
+- Bad, because it is no longer maintained (last release 0.302 of 2015).
 
 ### autotype
 
 - Good, because it covers German ligatures and offers further features (e.g., hyphenation of long words).
+- Good, because it is maintained (release 0.6 of 2026).
 - Bad, because it requires LuaLaTeX.
 - Bad, because it does not support English.
 
