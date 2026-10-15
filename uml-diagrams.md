@@ -122,5 +122,5 @@ Both run `latex`, `dvips`, and `ps2pdf` on the PSTricks pictures and include the
 
 ## More Information
 
-The MWE sources compile with `lualatex <file>.tex`; the PlantUML sources with `plantuml -tpng <file>.puml`.
-The images are rendered with `pdftoppm -r 110 -png -singlefile`.
+[uml-diagrams/regenerate.sh](uml-diagrams/regenerate.sh) regenerates all images from the sources (`lualatex`, then `pdftoppm -r 110`; `plantuml -tpng` for the PlantUML references).
+Its header shows how to run LuaLaTeX in the TeX Live Docker image.
