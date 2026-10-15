@@ -5,6 +5,11 @@
 \usepackage[Renderer={mmdc -p puppeteer.json}]{ltmermaid}
 \begin{document}
 \begin{mermaid}
+---
+config:
+  class:
+    hideEmptyMembersBox: true
+---
 classDiagram
   Driver -- Car : drives >
   Car *-- Wheel : have 4 >

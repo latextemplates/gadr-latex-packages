@@ -73,8 +73,8 @@ All MWEs above are typeset in a sans-serif font:
 
 | MetaUML | tikz-uml | Mermaid (ltMermaid) |
 | -- | -- | -- |
-| ![class relations, name only, MetaUML](uml-diagrams/class-relations--name-only--metauml.png) | ![class relations, name only, tikz-uml](uml-diagrams/class-relations--name-only--tikz-uml.png) | ![class relations, name only, Mermaid](uml-diagrams/class-relations--name-only--ltmermaid.png) |
-| `EClass.Car(iClassNameOnly)("Car")()();` (or `ClassName.Car("Car");`). MetaUML still draws the lines of the (empty) compartments; redefining `Class_paintSkin` omits them (see [class-relations--name-only--metauml.tex](uml-diagrams/class-relations--name-only--metauml.tex)). A small empty space below the name remains. | `\umlsimpleclass{Car}` instead of `\umlemptyclass{Car}` | `hideEmptyMembersBox: true` in the front matter of the diagram (see [class-relations--name-only--ltmermaid.tex](uml-diagrams/class-relations--name-only--ltmermaid.tex)) |
+| ![class relations, name only, MetaUML](uml-diagrams/class-relations--name-only--metauml.png) | ![class relations, name only, tikz-uml](uml-diagrams/class-relations--name-only--tikz-uml.png) | ![class relations, Mermaid](uml-diagrams/class-relations--ltmermaid.png) |
+| `EClass.Car(iClassNameOnly)("Car")()();` (or `ClassName.Car("Car");`). MetaUML still draws the lines of the (empty) compartments; redefining `Class_paintSkin` omits them (see [class-relations--name-only--metauml.tex](uml-diagrams/class-relations--name-only--metauml.tex)). A small empty space below the name remains. | `\umlsimpleclass{Car}` instead of `\umlemptyclass{Car}` | `hideEmptyMembersBox: true` in the front matter of the diagram (used in the comparison above, see [class-relations--ltmermaid.tex](uml-diagrams/class-relations--ltmermaid.tex)) |
 
 - pgf-umlcd: an empty `class` environment still shows the empty compartments.
 - pst-uml: `\umlClass{Car}{}` shows the name only (see above).
