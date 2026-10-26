@@ -25,7 +25,7 @@ jobs:
       # (with suggested fixes); the rest stay check annotations. On push
       # there is no PR to review, so everything stays a check annotation.
       - name: Lint the Markdown files with Vale
-        uses: vale-cli/vale-action@v3.0.0
+        uses: vale-cli/vale-action@518a9136acc6e6668ce7c00d367051e0941e87ff # v3.0.0
         with:
           files: all
           reporter: ${{ github.event_name == 'pull_request' && 'github-pr-review' || 'github-check' }}
