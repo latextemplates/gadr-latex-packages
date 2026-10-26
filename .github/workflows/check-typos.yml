@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Set up Git repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       # Known misspellings in prose, code, and file names; fails the job.
       # Allow false positives in .typos.toml ([default.extend-words]).
       - name: Check for typos
