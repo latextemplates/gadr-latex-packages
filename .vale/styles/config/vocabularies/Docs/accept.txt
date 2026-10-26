@@ -1,3 +1,6 @@
+(?i)ltmermaid
+(?i)plantuml
+(?i)uml
 acro
 ADRs
 amsmath
@@ -19,7 +22,6 @@ hyperref
 latextemplates
 ligatex
 ligtype
-(?i)ltmermaid
 luamplib
 luapstricks
 marginnote
@@ -31,7 +33,6 @@ pdfcomment
 pdfmarginpar
 PDFs
 pdftricks
-(?i)plantuml
 prepends
 PSTricks
 Pygments
@@ -45,6 +46,6 @@ TeX's
 textcmds
 todonotes
 TODOs
-(?i)uml
 varioref
+xurl
 zref

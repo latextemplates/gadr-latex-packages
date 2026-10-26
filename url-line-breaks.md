@@ -8,18 +8,18 @@ How to break long URLs?
 
 ## Considered Options
 
-- [url](https://ctan.org/pkg/url) with option `hyphens`
-- [url](https://ctan.org/pkg/url) with additional break points (`\g@addto@macro{\UrlBreaks}{\UrlOrds}`)
+- [`url`](https://ctan.org/pkg/url) with option `hyphens`
+- [`url`](https://ctan.org/pkg/url) with additional break points (`\g@addto@macro{\UrlBreaks}{\UrlOrds}`)
 - [xurl](https://ctan.org/pkg/xurl)
 
 ## Pros and Cons of the Options
 
-### url with option `hyphens`
+### `url` with option `hyphens`
 
 - Good, because it is the standard package, loaded by hyperref and many classes.
 - Bad, because it breaks only at a few characters (`/`, `.`, `-`, …); a long segment without them, such as a commit hash, runs into the margin.
 
-### url with additional break points
+### `url` with additional break points
 
 - Good, because it adds more symbols as break points without a further package.
 - Bad, because it relies on internals and still does not break between letters and digits.
