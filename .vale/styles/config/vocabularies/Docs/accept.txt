@@ -50,4 +50,5 @@ textcmds
 todonotes
 TODOs
 varioref
+xurl
 zref
