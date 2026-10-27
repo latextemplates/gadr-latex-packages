@@ -37,6 +37,7 @@ pdfmarginpar
 PDFs
 pdftricks
 prepends
+progressbar
 PSTricks
 Pygments
 rmligs
