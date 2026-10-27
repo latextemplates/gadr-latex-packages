@@ -1,3 +1,6 @@
+(?i)ltmermaid
+(?i)plantuml
+(?i)uml
 acro
 ADRs
 amsmath
@@ -6,12 +9,15 @@ biblatex
 booktabs
 cleveref
 csquotes
+dblfnote
 delig
 diagbox
 diffable
 enumitem
 fancyvrb
 fi
+fnpara
+footmisc
 gmp
 Graphviz
 hardcoded
@@ -19,9 +25,9 @@ hyperref
 latextemplates
 ligatex
 ligtype
-(?i)ltmermaid
 luamplib
 luapstricks
+manyfoot
 marginnote
 microtype
 mindflow
@@ -31,7 +37,6 @@ pdfcomment
 pdfmarginpar
 PDFs
 pdftricks
-(?i)plantuml
 prepends
 PSTricks
 Pygments
@@ -45,6 +50,6 @@ TeX's
 textcmds
 todonotes
 TODOs
-(?i)uml
 varioref
+xurl
 zref
