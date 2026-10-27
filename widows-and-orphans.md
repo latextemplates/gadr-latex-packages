@@ -5,6 +5,8 @@
 A single line of a paragraph at the bottom (orphan) or top (widow) of a page looks bad.
 How to avoid widows and orphans?
 
+A short last line of a paragraph (a "runt", sometimes also called a widow) is a line-breaking matter inside the paragraph and is covered in [How to avoid a short last line of a paragraph](short-last-lines.md).
+
 ## Considered Options
 
 - set `\clubpenalty` and `\widowpenalty` by hand
