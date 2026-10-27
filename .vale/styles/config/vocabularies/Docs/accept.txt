@@ -22,9 +22,11 @@ gmp
 Graphviz
 hardcoded
 hyperref
+interword
 latextemplates
 ligatex
 ligtype
+linebreaker
 luamplib
 luapstricks
 manyfoot
@@ -32,12 +34,14 @@ marginnote
 microtype
 mindflow
 MWEs
+nowidow
 paralist
 pdfcomment
 pdfmarginpar
 PDFs
 pdftricks
 prepends
+progressbar
 PSTricks
 Pygments
 rmligs
