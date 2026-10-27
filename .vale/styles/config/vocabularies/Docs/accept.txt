@@ -9,12 +9,15 @@ biblatex
 booktabs
 cleveref
 csquotes
+dblfnote
 delig
 diagbox
 diffable
 enumitem
 fancyvrb
 fi
+fnpara
+footmisc
 gmp
 Graphviz
 hardcoded
@@ -26,6 +29,7 @@ ligtype
 linebreaker
 luamplib
 luapstricks
+manyfoot
 marginnote
 microtype
 mindflow
