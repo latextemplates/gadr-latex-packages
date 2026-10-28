@@ -34,7 +34,7 @@ How to highlight a passage of text so that it breaks across lines?
 - Good, because it highlights at the node level after line breaking, so the passage may contain anything and breaks like ordinary text.
 - Good, because the color needs no special syntax (`luacolor` is required for the color to show).
 - Bad, because it needs LuaLaTeX.
-- Bad, because luacolor replaces the color stack by attributes, which can interfere with packages that drive the color stack themselves.
+- Neutral, because luacolor changes how LuaTeX produces colors: it tags glyphs and rules with an attribute instead of writing color-stack specials. A package that drives the color stack itself could disagree with that; hyperref, minted, pgfplots, tcolorbox and pdfcomment work unchanged.
 
 ### tcolorbox
 

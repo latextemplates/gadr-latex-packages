@@ -38,6 +38,7 @@ nowidow
 paralist
 pdfcomment
 pdfmarginpar
+pgfplots
 PDFs
 pdftricks
 prepends
@@ -50,11 +51,13 @@ SIunits
 siunitx
 slashbox
 tabularray
+tcolorbox
 TeX's
 textcmds
 todonotes
 TODOs
 varioref
+xcolor
 xurl
 zref
 impnattypo
