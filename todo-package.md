@@ -11,15 +11,21 @@ How to mark TODO in LaTeX documents?
 - [pdfcomment](https://ctan.org/pkg/pdfcomment)
 - [pdfmarginpar](https://ctan.org/pkg/pdfmarginpar)
 
-## Pros and Cons of the Option
+Sources and images are in [todo-package/](todo-package/).
+
+## Pros and Cons of the Options
 
 ### todonotes
+
+![todonotes](todo-package/todonotes.png)
 
 - Good, because `\todo{...}`, `\missingfigure` and `\listoftodos` give in-text, in-margin and listed TODOs with no PDF-reader dependency.
 - Good, because it is widely used and simple to set up.
 - Bad, because notes are typeset into the page — they take space and can shift the layout, unlike PDF annotations.
 
 ### pdfcomment
+
+![pdfcomment](todo-package/pdfcomment.png)
 
 Needs some configuration:
 
@@ -32,6 +38,8 @@ Needs some configuration:
 - Good, because highlighting of words is not supported
 
 ### pdfmarginpar
+
+![pdfmarginpar](todo-package/pdfmarginpar.png)
 
 - Good, because uses PDF features
 - Bad, because development stopped.
