@@ -1,3 +1,4 @@
+(?i)downsamples?
 (?i)lua
 (?i)ltmermaid
 (?i)plantuml
@@ -19,15 +20,20 @@ fancyvrb
 fi
 fnpara
 footmisc
+Ghostscript
 gmp
+graphicscache
 Graphviz
 hardcoded
 hyperref
+impnattypo
 interword
 latextemplates
 ligatex
 ligtype
 linebreaker
+lua-ul
+luacolor
 luamplib
 luapstricks
 manyfoot
@@ -39,9 +45,9 @@ nowidow
 paralist
 pdfcomment
 pdfmarginpar
-pgfplots
 PDFs
 pdftricks
+pgfplots
 prepends
 progressbar
 PSTricks
@@ -51,8 +57,8 @@ selnolig
 SIunits
 siunitx
 slashbox
-tabularray
 tablefootnote
+tabularray
 tcolorbox
 TeX's
 textcmds
@@ -63,6 +69,3 @@ varioref
 xcolor
 xurl
 zref
-impnattypo
-lua-ul
-luacolor
