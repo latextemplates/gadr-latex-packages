@@ -1,0 +1,4 @@
+# Allowed words for the typos spell checker (crate-ci/typos), see .github/workflows/check-typos.yml
+[default.extend-words]
+# Ghostscript filter name FlateEncode
+Flate = "Flate"
