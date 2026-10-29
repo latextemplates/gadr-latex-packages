@@ -52,9 +52,11 @@ SIunits
 siunitx
 slashbox
 tabularray
+tablefootnote
 tcolorbox
 TeX's
 textcmds
+threeparttable
 todonotes
 TODOs
 varioref
