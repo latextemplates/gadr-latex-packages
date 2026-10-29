@@ -11,5 +11,5 @@ for tex in *.tex; do
   $engine -interaction=nonstopmode "$tex" > /dev/null
   pdftoppm -r 150 -png -singlefile "$name.pdf" "$name"
   convert "$name.png" -trim -bordercolor white -border 12 "$name.png"
-  rm -f "$name.aux" "$name.log" "$name.out" "$name.pdf"
+  rm -f "$name.aux" "$name.log" "$name.out" "$name.pdf" "$name.loc" "$name.soc"
 done

@@ -13,13 +13,15 @@ Sources and images are in [change-tracking/](change-tracking/).
 - [changes](https://ctan.org/pkg/changes)
 - [todonotes](https://ctan.org/pkg/todonotes)
 - [latexdiff](https://ctan.org/pkg/latexdiff)
-- [trackchanges](https://ctan.org/pkg/trackchanges)
+- [trackchanges](https://trackchanges.sourceforge.net/) (not on CTAN)
 
 ## Pros and Cons of the Options
 
 ### phfcc
 
 ![phfcc](change-tracking/phfcc.png)
+
+Source: [phfcc.tex](change-tracking/phfcc.tex)
 
 - Good, because one command per author covers everything: `\AlE{added}`, `\AlE*{removed}`, `\AlE[comment]`, `\AlE!{important}`.
 - Good, because the initials are set once per page in the margin, so the text is not cluttered.
@@ -31,12 +33,18 @@ Sources and images are in [change-tracking/](change-tracking/).
 
 ![changes](change-tracking/changes.png)
 
+Source: [changes.tex](change-tracking/changes.tex)
+
 - Good, because `\added`, `\deleted`, `\replaced`, `\highlight` and `\comment` are explicit, and `\listofchanges` lists them.
 - Good, because the `final` option removes all marks and a script (`pyMergeChanges.py`) applies them to the source.
 - Bad, because every mark carries the author as `[id=...]` and a superscript marker, which clutters the text.
 - Bad, because `\comment` clashes with other packages that define `\comment` (verbatim, mindflow).
 
 ### todonotes
+
+![todonotes](change-tracking/todonotes.png)
+
+Source: [todonotes.tex](change-tracking/todonotes.tex)
 
 - Good, because it is already there for TODOs.
 - Bad, because it only places notes; additions and removals have to be marked by hand.
@@ -48,4 +56,4 @@ Sources and images are in [change-tracking/](change-tracking/).
 
 ### trackchanges
 
-- Bad, because it is not part of TeX Live.
+- Bad, because it is not on CTAN and not part of TeX Live; the last release is from 2009.

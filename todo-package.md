@@ -10,6 +10,7 @@ How to mark TODO in LaTeX documents?
 - [todonotes](https://ctan.org/pkg/todonotes)
 - [pdfcomment](https://ctan.org/pkg/pdfcomment)
 - [pdfmarginpar](https://ctan.org/pkg/pdfmarginpar)
+- [phfcc](https://ctan.org/pkg/phfcc)
 
 Sources and images are in [todo-package/](todo-package/).
 
@@ -19,6 +20,8 @@ Sources and images are in [todo-package/](todo-package/).
 
 ![todonotes](todo-package/todonotes.png)
 
+Source: [todonotes.tex](todo-package/todonotes.tex)
+
 - Good, because `\todo{...}`, `\missingfigure` and `\listoftodos` give in-text, in-margin and listed TODOs with no PDF-reader dependency.
 - Good, because it is widely used and simple to set up.
 - Bad, because notes are typeset into the page — they take space and can shift the layout, unlike PDF annotations.
@@ -26,6 +29,8 @@ Sources and images are in [todo-package/](todo-package/).
 ### pdfcomment
 
 ![pdfcomment](todo-package/pdfcomment.png)
+
+Source: [pdfcomment.tex](todo-package/pdfcomment.tex)
 
 Needs some configuration:
 
@@ -41,6 +46,8 @@ Needs some configuration:
 
 ![pdfmarginpar](todo-package/pdfmarginpar.png)
 
+Source: [pdfmarginpar.tex](todo-package/pdfmarginpar.tex)
+
 - Good, because uses PDF features
 - Bad, because development stopped.
   Reasons were:
@@ -48,3 +55,14 @@ Needs some configuration:
   b) ideas were incorporated at pdfcomment
 - Bad, because highlighting of words is not supported
 - Bad, because uses GPL as license
+
+### phfcc
+
+![phfcc](todo-package/phfcc.png)
+
+Source: [phfcc.tex](todo-package/phfcc.tex)
+
+- Good, because `\AE[comment]` is a TODO in the author's color with the initials in the margin, and the same command marks additions and removals (see [How to track changes by several authors](change-tracking.md)).
+- Good, because `\phfDisableCommentingCommands` hides all comments for the final version.
+- Bad, because comments are typeset into the text and take space, like todonotes' inline notes; the `footcomments` style moves them into footnotes.
+- Bad, because there is no list of all comments.
