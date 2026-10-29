@@ -1,3 +1,4 @@
+(?i)lua
 (?i)ltmermaid
 (?i)plantuml
 (?i)uml
@@ -27,7 +28,6 @@ latextemplates
 ligatex
 ligtype
 linebreaker
-Lua
 luamplib
 luapstricks
 manyfoot
@@ -52,9 +52,11 @@ SIunits
 siunitx
 slashbox
 tabularray
+tablefootnote
 tcolorbox
 TeX's
 textcmds
+threeparttable
 todonotes
 TODOs
 varioref
