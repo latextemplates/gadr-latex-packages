@@ -27,6 +27,7 @@ latextemplates
 ligatex
 ligtype
 linebreaker
+Lua
 luamplib
 luapstricks
 manyfoot
