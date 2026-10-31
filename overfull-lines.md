@@ -10,7 +10,7 @@ How to avoid overfull lines?
 
 - fix by hand
 - set `\emergencystretch` globally
-- [linebreaker](https://ctan.org/pkg/linebreaker) (LuaLaTeX only)
+- [`linebreaker`](https://ctan.org/pkg/linebreaker) (LuaLaTeX only)
 
 ## Pros and Cons of the Options
 
@@ -24,7 +24,7 @@ How to avoid overfull lines?
 - Good, because it works with every engine.
 - Bad, because one value is either too small for the hard cases or loosens paragraphs that do not need it.
 
-### linebreaker
+### `linebreaker`
 
 - Good, because it raises `\tolerance` and `\emergencystretch` only for paragraphs that would otherwise be overfull, step by step until they fit.
 - Bad, because the re-broken paragraph can have visibly wide interword spaces.

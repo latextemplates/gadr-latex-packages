@@ -7,10 +7,10 @@ How to highlight a passage of text so that it breaks across lines?
 
 ## Considered Options
 
-- `\colorbox` from [xcolor](https://ctan.org/pkg/xcolor)
-- [soul](https://ctan.org/pkg/soul) with `\hl`
-- [lua-ul](https://ctan.org/pkg/lua-ul) with `\highLight` (LuaLaTeX only)
-- [tcolorbox](https://ctan.org/pkg/tcolorbox) with a breakable box
+- `\colorbox` from [`xcolor`](https://ctan.org/pkg/xcolor)
+- [`soul`](https://ctan.org/pkg/soul) with `\hl`
+- [`lua-ul`](https://ctan.org/pkg/lua-ul) with `\highLight` (LuaLaTeX only)
+- [`tcolorbox`](https://ctan.org/pkg/tcolorbox) with a breakable box
 
 ## Pros and Cons of the Options
 
@@ -19,12 +19,12 @@ How to highlight a passage of text so that it breaks across lines?
 - Good, because it needs no further package and works with every engine.
 - Bad, because the box is unbreakable: a passage longer than the rest of the line runs into the margin.
 
-### soul
+### `soul`
 
 - Good, because the highlighted passage breaks across lines with every engine.
 - Bad, because soul re-scans the passage syllable by syllable, so `\cite`, `\ref` and other commands with arguments fail unless they are braced (`{\cite{x}}`), and some content (verbatim, math) cannot be highlighted at all.
 
-### lua-ul
+### `lua-ul`
 
 ```latex
 \usepackage{luacolor,lua-ul}
@@ -36,7 +36,7 @@ How to highlight a passage of text so that it breaks across lines?
 - Bad, because it needs LuaLaTeX.
 - Neutral, because luacolor changes how LuaTeX produces colors: it tags glyphs and rules with an attribute instead of writing color-stack specials. A package that drives the color stack itself could disagree with that; hyperref, minted, pgfplots, tcolorbox and pdfcomment work unchanged.
 
-### tcolorbox
+### `tcolorbox`
 
 - Good, because a breakable box can span pages.
 - Bad, because it is a display element: it starts a new line and is meant for blocks, not for a few words inside a paragraph.

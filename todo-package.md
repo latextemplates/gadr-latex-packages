@@ -7,16 +7,16 @@ How to mark TODO in LaTeX documents?
 
 ## Considered Options
 
-- [todonotes](https://ctan.org/pkg/todonotes)
-- [pdfcomment](https://ctan.org/pkg/pdfcomment)
-- [pdfmarginpar](https://ctan.org/pkg/pdfmarginpar)
-- [phfcc](https://ctan.org/pkg/phfcc)
+- [`todonotes`](https://ctan.org/pkg/todonotes)
+- [`pdfcomment`](https://ctan.org/pkg/pdfcomment)
+- [`pdfmarginpar`](https://ctan.org/pkg/pdfmarginpar)
+- [`phfcc`](https://ctan.org/pkg/phfcc)
 
 Sources and images are in [todo-package/](todo-package/).
 
 ## Pros and Cons of the Options
 
-### todonotes
+### `todonotes`
 
 ![todonotes](todo-package/todonotes.png)
 
@@ -26,7 +26,7 @@ Source: [todonotes.tex](todo-package/todonotes.tex)
 - Good, because it is widely used and simple to set up.
 - Bad, because notes are typeset into the page — they take space and can shift the layout, unlike PDF annotations.
 
-### pdfcomment
+### `pdfcomment`
 
 ![pdfcomment](todo-package/pdfcomment.png)
 
@@ -42,7 +42,7 @@ Needs some configuration:
 - Good, because uses PDF features
 - Good, because highlighting of words is not supported
 
-### pdfmarginpar
+### `pdfmarginpar`
 
 ![pdfmarginpar](todo-package/pdfmarginpar.png)
 
@@ -56,7 +56,7 @@ Source: [pdfmarginpar.tex](todo-package/pdfmarginpar.tex)
 - Bad, because highlighting of words is not supported
 - Bad, because uses GPL as license
 
-### phfcc
+### `phfcc`
 
 ![phfcc](todo-package/phfcc.png)
 

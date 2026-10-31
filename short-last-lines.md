@@ -12,7 +12,7 @@ This is a line-breaking matter inside the paragraph; a single line of a paragrap
 
 - fix by hand (`\looseness`, ties)
 - limit the stretch of `\parfillskip`
-- [impnattypo](https://ctan.org/pkg/impnattypo) with option `lastparline` (LuaLaTeX only)
+- [`impnattypo`](https://ctan.org/pkg/impnattypo) with option `lastparline` (LuaLaTeX only)
 
 ## Pros and Cons of the Options
 
@@ -32,7 +32,7 @@ A tie (`~`) between the last two words pulls a second word onto the last line.
 - Bad, because the glue is also stretched in ordinary paragraphs, which widens the interword spacing everywhere (the reason this was reverted in lncs-enhanced once, see [lncs-enhanced#16](https://github.com/latextemplates/lncs-enhanced/issues/16)).
 - Bad, because the fixed value does not follow `\linewidth` in lists and narrow columns.
 
-### impnattypo with option `lastparline`
+### `impnattypo` with option `lastparline`
 
 - Good, because with LuaLaTeX it inspects each paragraph after line breaking and vetoes only the offending break, so other paragraphs are untouched.
 - Good, because it also offers related French typography features (`parindent`, `nosingleletter`).
