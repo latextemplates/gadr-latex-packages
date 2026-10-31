@@ -9,15 +9,15 @@ Sources and images are in [change-tracking/](change-tracking/).
 
 ## Considered Options
 
-- [phfcc](https://ctan.org/pkg/phfcc)
-- [changes](https://ctan.org/pkg/changes)
-- [todonotes](https://ctan.org/pkg/todonotes)
-- [latexdiff](https://ctan.org/pkg/latexdiff)
+- [`phfcc`](https://ctan.org/pkg/phfcc)
+- [`changes`](https://ctan.org/pkg/changes)
+- [`todonotes`](https://ctan.org/pkg/todonotes)
+- [`latexdiff`](https://ctan.org/pkg/latexdiff)
 - [trackchanges](https://trackchanges.sourceforge.net/) (not on CTAN)
 
 ## Pros and Cons of the Options
 
-### phfcc
+### `phfcc`
 
 ![phfcc](change-tracking/phfcc.png)
 
@@ -29,7 +29,7 @@ Source: [phfcc.tex](change-tracking/phfcc.tex)
 - Good, because removed text is struck through across line breaks with LuaLaTeX (`rmstrikethrough` style, via lua-ul).
 - Bad, because there is no list of all changes.
 
-### changes
+### `changes`
 
 ![changes](change-tracking/changes.png)
 
@@ -40,7 +40,7 @@ Source: [changes.tex](change-tracking/changes.tex)
 - Bad, because every mark carries the author as `[id=...]` and a superscript marker, which clutters the text.
 - Bad, because `\comment` clashes with other packages that define `\comment` (verbatim, mindflow).
 
-### todonotes
+### `todonotes`
 
 ![todonotes](change-tracking/todonotes.png)
 
@@ -49,11 +49,11 @@ Source: [todonotes.tex](change-tracking/todonotes.tex)
 - Good, because it is already there for TODOs.
 - Bad, because it only places notes; additions and removals have to be marked by hand.
 
-### latexdiff
+### `latexdiff`
 
 - Good, because it compares two versions of the source and marks every difference, with nothing to write in the text.
 - Bad, because it needs two complete versions and a Perl run; it is a diff, not a conversation between authors.
 
-### trackchanges
+### `trackchanges`
 
 - Bad, because it is not on CTAN and not part of TeX Live; the last release is from 2009.

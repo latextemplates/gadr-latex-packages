@@ -11,13 +11,13 @@ How should UML diagrams be drawn?
 
 ## Considered Options
 
-- [PlantUML](https://plantuml.com/) via the [plantuml](https://ctan.org/pkg/plantuml) package
-- [MetaUML](https://ctan.org/pkg/metauml) (MetaPost)
-- [pst-uml](https://ctan.org/pkg/pst-uml) (PSTricks)
-- [pgf-umlcd](https://ctan.org/pkg/pgf-umlcd) and [pgf-umlsd](https://ctan.org/pkg/pgf-umlsd) (TikZ)
+- [PlantUML](https://plantuml.com/) via the [`plantuml`](https://ctan.org/pkg/plantuml) package
+- [`MetaUML`](https://ctan.org/pkg/metauml) (MetaPost)
+- [`pst-uml`](https://ctan.org/pkg/pst-uml) (PSTricks)
+- [`pgf-umlcd`](https://ctan.org/pkg/pgf-umlcd) and [`pgf-umlsd`](https://ctan.org/pkg/pgf-umlsd) (TikZ)
 - [tikz-uml](https://perso.ensta-paris.fr/~kielbasi/tikzuml/) (TikZ, not part of TeX Live)
-- [Mermaid](https://mermaid.js.org/) via [ltMermaid](https://ctan.org/pkg/ltmermaid)
-- [uml](https://ctan.org/pkg/uml) (PSTricks)
+- [Mermaid](https://mermaid.js.org/) via [`ltMermaid`](https://ctan.org/pkg/ltmermaid)
+- [`uml`](https://ctan.org/pkg/uml) (PSTricks)
 - drawing with an external tool (e.g., draw.io) and including the PDF
 
 ## Comparison
@@ -39,9 +39,9 @@ All LaTeX sources were compiled with LuaLaTeX of TeX Live 2026 *without* `--shel
 | | LuaLaTeX | pdfLaTeX | [TeX Live Docker image](https://gitlab.com/islandoftex/images/texlive) |
 | -- | -- | -- | -- |
 | PlantUML | `--shell-escape`, Java, PlantUML | `--shell-escape`, Java, PlantUML | no: contains Java and `plantuml.sty`, but not PlantUML and Graphviz |
-| MetaUML | built in ([luamplib](https://ctan.org/pkg/luamplib)) | `--shell-escape` ([gmp](https://ctan.org/pkg/gmp)) | yes |
+| MetaUML | built in ([`luamplib`](https://ctan.org/pkg/luamplib)) | `--shell-escape` ([`gmp`](https://ctan.org/pkg/gmp)) | yes |
 | pgf-umlcd / pgf-umlsd | works | works | yes |
-| pst-uml | built in ([luapstricks](https://ctan.org/pkg/luapstricks)) | `--shell-escape` ([auto-pst-pdf](https://ctan.org/pkg/auto-pst-pdf)) | yes |
+| pst-uml | built in ([`luapstricks`](https://ctan.org/pkg/luapstricks)) | `--shell-escape` ([`auto-pst-pdf`](https://ctan.org/pkg/auto-pst-pdf)) | yes |
 | tikz-uml | works | works | no: tikz-uml is not part of TeX Live |
 | Mermaid (ltMermaid) | `--shell-escape`, Mermaid CLI (Node.js, headless Chromium) | `--shell-escape`, Mermaid CLI (`mermaid` package of ltMermaid) | no: contains ltMermaid, but not the Mermaid CLI, Node.js, and Chromium |
 
@@ -95,19 +95,19 @@ Mermaid draws it with `+`/`-` at the arrows; `mirrorActors: false` in the front 
 - Bad, because it needs Java, PlantUML (and Graphviz for some diagrams), and `--shell-escape`.
 - Bad, because neither the [TeX Live Docker image](https://gitlab.com/islandoftex/images/texlive) nor Overleaf ship PlantUML (the Docker image contains Java and `plantuml.sty`, but not PlantUML and Graphviz).
 
-### MetaUML
+### `MetaUML`
 
-- Good, because LuaLaTeX runs MetaPost itself ([luamplib](https://ctan.org/pkg/luamplib), `\begin{mplibcode}`): no external tool, no `--shell-escape`.
+- Good, because LuaLaTeX runs MetaPost itself ([`luamplib`](https://ctan.org/pkg/luamplib), `\begin{mplibcode}`): no external tool, no `--shell-escape`.
 - Good, because the result is closest to PlantUML: correct UML arrow heads (triangle, diamonds) and labels on the lines.
 - Good, because with `\mplibtextextlabel{enable}` the labels are typeset by TeX in the font of the document.
 - Good, because it supports class, package, component (with provided and required interfaces), use case, activity, and state diagrams.
 - Neutral, because the layout is given by relations between the objects (e.g., `leftToRight(90)(A, B)`: 90 PostScript points between the boxes), not by coordinates.
 - Neutral, because hiding the members of a class (`iClassNameOnly`) leaves the compartment lines unless `Class_paintSkin` is redefined.
 - Bad, because it does not support sequence diagrams.
-- Bad, because with pdfLaTeX it needs [gmp](https://ctan.org/pkg/gmp) and `--shell-escape` (without it, `gmp` shows a placeholder).
+- Bad, because with pdfLaTeX it needs [`gmp`](https://ctan.org/pkg/gmp) and `--shell-escape` (without it, `gmp` shows a placeholder).
 - Bad, because MetaPost syntax is unfamiliar to most LaTeX users (e.g., `c1` is the array element `c[1]` and cannot be used as name).
 
-### pgf-umlcd and pgf-umlsd
+### `pgf-umlcd` and `pgf-umlsd`
 
 - Good, because they are pure TikZ: they work with every engine, without `--shell-escape`.
 - Good, because pgf-umlsd is the only package here that draws sequence diagrams.
@@ -116,11 +116,11 @@ Mermaid draws it with `+`/`-` at the arrows; `mirrorActors: false` in the front 
 - Bad, because the boxes are placed by coordinates and have a fixed default width, so boxes overlap unless widths are set (e.g., `text width=1.6cm`).
 - Bad, because pgf-umlcd does not support component diagrams.
 
-### pst-uml
+### `pst-uml`
 
-- Good, because LuaLaTeX runs PSTricks itself since [luapstricks](https://ctan.org/pkg/luapstricks) (TeX Live 2022): no `--shell-escape`. XeLaTeX supports PSTricks natively.
+- Good, because LuaLaTeX runs PSTricks itself since [`luapstricks`](https://ctan.org/pkg/luapstricks) (TeX Live 2022): no `--shell-escape`. XeLaTeX supports PSTricks natively.
 - Good, because the UML arrow heads (inheritance, aggregation, composition) are available as icons on the connections (`\ncputicon{umlCompos}`).
-- Neutral, because the boxes are placed by coordinates (`\rput`) and connected via [pst-node](https://ctan.org/pkg/pst-node) (`\rnode`, `\ncline`).
+- Neutral, because the boxes are placed by coordinates (`\rput`) and connected via [`pst-node`](https://ctan.org/pkg/pst-node) (`\rnode`, `\ncline`).
 - Bad, because it supports only class, use case, and state diagrams; no sequence and component diagrams.
 - Bad, because the documentation is in French and the package (version 0.83) is no longer developed.
 - Bad, because pdfLaTeX cannot run PSTricks: it needs a workaround (see below) and `--shell-escape`.
@@ -129,11 +129,11 @@ Mermaid draws it with `+`/`-` at the arrows; `mirrorActors: false` in the front 
 
 Both run `latex`, `dvips`, and `ps2pdf` on the PSTricks pictures and include the resulting PDF.
 
-- [pst-pdf](https://ctan.org/pkg/pst-pdf) with [auto-pst-pdf](https://ctan.org/pkg/auto-pst-pdf): Good, because `auto-pst-pdf` runs the extra steps automatically (with `--shell-escape`); it is the common way.
-- [pdftricks](https://ctan.org/pkg/pdftricks): Bad, because it needs the pictures in special environments and offers nothing beyond `pst-pdf`.
+- [`pst-pdf`](https://ctan.org/pkg/pst-pdf) with [`auto-pst-pdf`](https://ctan.org/pkg/auto-pst-pdf): Good, because `auto-pst-pdf` runs the extra steps automatically (with `--shell-escape`); it is the common way.
+- [`pdftricks`](https://ctan.org/pkg/pdftricks): Bad, because it needs the pictures in special environments and offers nothing beyond `pst-pdf`.
 - Both are not needed with LuaLaTeX (luapstricks) or XeLaTeX.
 
-### tikz-uml
+### `tikz-uml`
 
 - Good, because it is pure TikZ: it works with every engine, without `--shell-escape`.
 - Good, because it covers all diagram types of the comparison: class, component (with provided and required interfaces), and sequence diagrams; also use case and state diagrams.
@@ -142,7 +142,7 @@ Both run `latex`, `dvips`, and `ps2pdf` on the PSTricks pictures and include the
 - Neutral, because the default colors (yellow boxes) need to be changed for a plain look.
 - Bad, because it is not part of TeX Live (nor CTAN); it has to be added, e.g., as git submodule (which Overleaf does not fetch).
 
-### Mermaid (ltMermaid)
+### Mermaid (`ltMermaid`)
 
 - Good, because the [Mermaid](https://mermaid.js.org/) syntax is as compact as PlantUML's, and the layout is automatic.
 - Good, because Mermaid is widespread (e.g., rendered by GitHub and GitLab in Markdown), so the diagram source can be reused outside LaTeX.
@@ -152,7 +152,7 @@ Both run `latex`, `dvips`, and `ps2pdf` on the PSTricks pictures and include the
 - Bad, because Mermaid has no UML component diagrams.
 - Neutral, because ltMermaid is new (2026); it is part of TeX Live 2026.
 
-### uml
+### `uml`
 
 - Bad, because it is based on PSTricks (same engine restrictions as pst-uml) and no longer developed.
 - Not tested.

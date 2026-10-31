@@ -10,7 +10,7 @@ How to break long URLs?
 
 - [`url`](https://ctan.org/pkg/url) with option `hyphens`
 - [`url`](https://ctan.org/pkg/url) with additional break points (`\g@addto@macro{\UrlBreaks}{\UrlOrds}`)
-- [xurl](https://ctan.org/pkg/xurl)
+- [`xurl`](https://ctan.org/pkg/xurl)
 
 ## Pros and Cons of the Options
 
@@ -24,7 +24,7 @@ How to break long URLs?
 - Good, because it adds more symbols as break points without a further package.
 - Bad, because it relies on internals and still does not break between letters and digits.
 
-### xurl
+### `xurl`
 
 - Good, because it allows breaks after any character, so no URL runs into the margin.
 - Good, because it sets biblatex's URL penalties when loaded after biblatex, and leaves them alone when loaded before.

@@ -7,14 +7,14 @@ How to shrink the images in the PDF?
 
 ## Considered Options
 
-- [graphicscache](https://ctan.org/pkg/graphicscache)
+- [`graphicscache`](https://ctan.org/pkg/graphicscache)
 - downsample the image files before including them (ImageMagick, Ghostscript)
 - post-process the finished PDF with Ghostscript (`-dPDFSETTINGS=/ebook`)
 - `\pdfcompresslevel` and `\pdfobjcompresslevel`
 
 ## Pros and Cons of the Options
 
-### graphicscache
+### `graphicscache`
 
 - Good, because the sources stay untouched: each `\includegraphics` is re-encoded once by Ghostscript and the result is cached, so later runs cost nothing.
 - Good, because it is lossless with `compress=flat` and downsamples only above a resolution limit (300 dpi by default).
