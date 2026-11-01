@@ -23,10 +23,10 @@ paragraph ((a) one, (b) two), reads better. How to get compact and inline lists?
 
 - Good, because it provides ready-made `compactitem`/`compactenum` (tight) and `inparaenum`/`inparaitem` (run-in) environments.
 - Good, because it is small and simple.
-- Bad, because it is older and less flexible for label and spacing tweaks, and must not be combined with enumitem.
+- Bad, because it is older and less flexible for label and spacing tweaks, and must not be combined with `enumitem`.
 
 ### `enumitem`
 
 - Good, because it is the modern, actively maintained package for full control of labels, spacing (`nosep`) and resuming lists.
 - Good, because inline lists are available via the `inline` option (`enumerate*`).
-- Bad, because for the simple "just give me a compact list" case it is more configuration than paralist.
+- Bad, because for the simple "just give me a compact list" case it is more configuration than `paralist`.

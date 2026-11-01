@@ -10,7 +10,7 @@ decimal marker. How should numbers and units be typeset?
 
 - manual math mode (`$3.5\,\mathrm{kg}$`)
 - [`siunitx`](https://ctan.org/pkg/siunitx)
-- [`units`](https://ctan.org/pkg/units) / SIunits (older, superseded)
+- [`units`](https://ctan.org/pkg/units) / `SIunits` (older, superseded)
 
 ## Pros and Cons of the Options
 
@@ -27,6 +27,6 @@ decimal marker. How should numbers and units be typeset?
 - Bad, because it is a large package with noticeable compile overhead.
 - Bad, because the v2→v3 API change (`\SI` → `\qty`) means older examples need updating.
 
-### `units` / SIunits
+### `units` / `SIunits`
 
-- Bad, because these older packages are superseded by siunitx and no longer recommended.
+- Bad, because these older packages are superseded by `siunitx` and no longer recommended.

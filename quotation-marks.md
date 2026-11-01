@@ -10,7 +10,7 @@ typeset?
 
 - hardcoded glyphs (`` ``...'' ``)
 - [`csquotes`](https://ctan.org/pkg/csquotes)
-- csquotes with `\MakeOuterQuote{"}`: plain `"text"` becomes `\enquote{text}`
+- `csquotes` with `\MakeOuterQuote{"}`: plain `"text"` becomes `\enquote{text}`
 - [`textcmds`](https://ctan.org/pkg/textcmds) (`\qq`)
 
 ## Pros and Cons of the Options
@@ -24,7 +24,7 @@ typeset?
 ### `csquotes`
 
 - Good, because `\enquote{...}` picks the right marks from the active babel/polyglossia language and switches nested marks automatically.
-- Good, because it integrates with biblatex for quoted citations.
+- Good, because it integrates with `biblatex` for quoted citations.
 - Bad, because it is a heavier dependency and some languages need a little configuration.
 
 ### `csquotes` with `\MakeOuterQuote{"}`
@@ -36,5 +36,5 @@ typeset?
 
 ### `textcmds`
 
-- Good, because `\qq{...}` is a lightweight alternative when the full csquotes machinery is not needed.
-- Bad, because it offers less language integration than csquotes.
+- Good, because `\qq{...}` is a lightweight alternative when the full `csquotes` machinery is not needed.
+- Bad, because it offers less language integration than `csquotes`.

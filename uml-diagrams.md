@@ -22,14 +22,14 @@ How should UML diagrams be drawn?
 
 ## Comparison
 
-The minimal working examples (MWEs) are the diagrams of the examples of the [plantuml package](https://github.com/koppor/plantuml).
+The minimal working examples (MWEs) are the diagrams of the examples of the [`plantuml` package](https://github.com/koppor/plantuml).
 Each diagram is rebuilt with every package that supports the diagram type.
 tikz-uml is taken from its [git repository](https://plmlab.math.cnrs.fr/tikzuml/tikzuml) (commit 4d6aaba of 2026-05-28).
-The ltMermaid MWEs (ltMermaid 1.0c) need `--shell-escape` and the Mermaid CLI; they were rendered with Mermaid CLI 11.17.0.
+The `ltMermaid` MWEs (`ltMermaid` 1.0c) need `--shell-escape` and the Mermaid CLI; they were rendered with Mermaid CLI 11.17.0.
 Sources and images are in [uml-diagrams/](uml-diagrams/).
 All LaTeX sources were compiled with LuaLaTeX of TeX Live 2026 *without* `--shell-escape`; the PlantUML images were rendered by PlantUML 1.2026.8.
 
-| MWE | PlantUML (reference) | MetaUML | pgf-umlcd / pgf-umlsd | pst-uml | tikz-uml | Mermaid (ltMermaid) |
+| MWE | PlantUML (reference) | MetaUML | pgf-umlcd / pgf-umlsd | pst-uml | tikz-uml | Mermaid (`ltMermaid`) |
 | -- | -- | -- | -- | -- | -- | -- |
 | Sequence | ![sequence, PlantUML](uml-diagrams/sequence--plantuml.png) | not supported | ![sequence, pgf-umlsd](uml-diagrams/sequence--pgf-umlsd.png) | not supported | ![sequence, tikz-uml](uml-diagrams/sequence--tikz-uml.png) | ![sequence, Mermaid](uml-diagrams/sequence--ltmermaid.png) |
 | Class relations | ![class relations, PlantUML](uml-diagrams/class-relations--plantuml.png) | ![class relations, MetaUML](uml-diagrams/class-relations--metauml.png) | ![class relations, pgf-umlcd](uml-diagrams/class-relations--pgf-umlcd.png) | ![class relations, pst-uml](uml-diagrams/class-relations--pst-uml.png) | ![class relations, tikz-uml](uml-diagrams/class-relations--tikz-uml.png) | ![class relations, Mermaid](uml-diagrams/class-relations--ltmermaid.png) |
@@ -43,7 +43,7 @@ All LaTeX sources were compiled with LuaLaTeX of TeX Live 2026 *without* `--shel
 | pgf-umlcd / pgf-umlsd | works | works | yes |
 | pst-uml | built in ([`luapstricks`](https://ctan.org/pkg/luapstricks)) | `--shell-escape` ([`auto-pst-pdf`](https://ctan.org/pkg/auto-pst-pdf)) | yes |
 | tikz-uml | works | works | no: tikz-uml is not part of TeX Live |
-| Mermaid (ltMermaid) | `--shell-escape`, Mermaid CLI (Node.js, headless Chromium) | `--shell-escape`, Mermaid CLI (`mermaid` package of ltMermaid) | no: contains ltMermaid, but not the Mermaid CLI, Node.js, and Chromium |
+| Mermaid (`ltMermaid`) | `--shell-escape`, Mermaid CLI (Node.js, headless Chromium) | `--shell-escape`, Mermaid CLI (`mermaid` package of `ltMermaid`) | no: contains `ltMermaid`, but not the Mermaid CLI, Node.js, and Chromium |
 
 ## Syntax
 
@@ -71,7 +71,7 @@ All MWEs above are typeset in a sans-serif font:
 
 ### Hiding the members of a class
 
-| MetaUML | tikz-uml | Mermaid (ltMermaid) |
+| MetaUML | tikz-uml | Mermaid (`ltMermaid`) |
 | -- | -- | -- |
 | ![class relations, name only, MetaUML](uml-diagrams/class-relations--name-only--metauml.png) | ![class relations, name only, tikz-uml](uml-diagrams/class-relations--name-only--tikz-uml.png) | ![class relations, Mermaid](uml-diagrams/class-relations--ltmermaid.png) |
 | `EClass.Car(iClassNameOnly)("Car")()();` (or `ClassName.Car("Car");`). MetaUML still draws the lines of the (empty) compartments; redefining `Class_paintSkin` omits them (see [class-relations--name-only--metauml.tex](uml-diagrams/class-relations--name-only--metauml.tex)). A small empty space below the name remains. | `\umlsimpleclass{Car}` instead of `\umlemptyclass{Car}` | `hideEmptyMembersBox: true` in the front matter of the diagram (used in the comparison above, see [class-relations--ltmermaid.tex](uml-diagrams/class-relations--ltmermaid.tex)) |
@@ -125,13 +125,13 @@ Mermaid draws it with `+`/`-` at the arrows; `mirrorActors: false` in the front 
 - Bad, because the documentation is in French and the package (version 0.83) is no longer developed.
 - Bad, because pdfLaTeX cannot run PSTricks: it needs a workaround (see below) and `--shell-escape`.
 
-#### Running PSTricks with pdfLaTeX: pst-pdf versus pdftricks
+#### Running PSTricks with pdfLaTeX: `pst-pdf` versus `pdftricks`
 
 Both run `latex`, `dvips`, and `ps2pdf` on the PSTricks pictures and include the resulting PDF.
 
 - [`pst-pdf`](https://ctan.org/pkg/pst-pdf) with [`auto-pst-pdf`](https://ctan.org/pkg/auto-pst-pdf): Good, because `auto-pst-pdf` runs the extra steps automatically (with `--shell-escape`); it is the common way.
 - [`pdftricks`](https://ctan.org/pkg/pdftricks): Bad, because it needs the pictures in special environments and offers nothing beyond `pst-pdf`.
-- Both are not needed with LuaLaTeX (luapstricks) or XeLaTeX.
+- Both are not needed with LuaLaTeX (`luapstricks`) or XeLaTeX.
 
 ### `tikz-uml`
 
@@ -146,11 +146,11 @@ Both run `latex`, `dvips`, and `ps2pdf` on the PSTricks pictures and include the
 
 - Good, because the [Mermaid](https://mermaid.js.org/) syntax is as compact as PlantUML's, and the layout is automatic.
 - Good, because Mermaid is widespread (e.g., rendered by GitHub and GitLab in Markdown), so the diagram source can be reused outside LaTeX.
-- Good, because ltMermaid supports pdfLaTeX, XeLaTeX, and LuaLaTeX (`mermaid` resp. `ltmermaid` package).
+- Good, because `ltMermaid` supports pdfLaTeX, XeLaTeX, and LuaLaTeX (`mermaid` resp. `ltmermaid` package).
 - Bad, because it needs `--shell-escape` and the Mermaid CLI (`mmdc`), which needs Node.js and a headless Chromium; the [TeX Live Docker image](https://gitlab.com/islandoftex/images/texlive) contains neither.
 - Bad, because the diagrams use the font and colors of Mermaid, not the font of the document.
 - Bad, because Mermaid has no UML component diagrams.
-- Neutral, because ltMermaid is new (2026); it is part of TeX Live 2026.
+- Neutral, because `ltMermaid` is new (2026); it is part of TeX Live 2026.
 
 ### `uml`
 

@@ -24,13 +24,13 @@ LuaTeX inserts the break points also inside boxes when `\mathpenaltiesmode=1` is
 ### `footmisc` with option `para`
 
 ```latex
-\usepackage[para]{footmisc}
+\usepackage[para]{`footmisc`}
 \mathpenaltiesmode=1 % LuaLaTeX only: lets URLs break inside the footnote paragraph
 ```
 
 - Good, because `\footnote` is used as usual.
 - Good, because it is maintained by the LaTeX team and combines with its other options (`bottom`, `multiple`, `perpage`, ...).
-- Good, because it works with hyperref.
+- Good, because it works with `hyperref`.
 - Bad, because URLs cannot break with pdfLaTeX (see above).
 
 ### `manyfoot` with option `para`
@@ -47,12 +47,12 @@ LuaTeX inserts the break points also inside boxes when `\mathpenaltiesmode=1` is
 ### `bigfoot` with `\DeclareNewFootnote[para]{default}`
 
 - Good, because paragraph footnotes may be split across pages and may be nested.
-- Bad, because it does not compile with TeX Live 2026 and hyperref (`Undefined control sequence \FN@colorstack`); the last release is from 2015.
+- Bad, because it does not compile with TeX Live 2026 and `hyperref` (`Undefined control sequence \FN@colorstack`); the last release is from 2015.
 - Bad, because URLs cannot break with pdfLaTeX (see above).
 
 ### `fnpara`
 
-- Bad, because it is superseded by footmisc's option `para` (stated on CTAN).
+- Bad, because it is superseded by `footmisc`'s option `para` (stated on CTAN).
 - Bad, because URLs cannot break with pdfLaTeX (see above).
 
 ### `dblfnote`

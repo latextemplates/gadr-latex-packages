@@ -24,9 +24,9 @@ Sources and images are in [citation-styles/](citation-styles/); all examples cit
 
 ### `biblatex` with `authoryear` or `numeric`
 
-![Output of the built-in authoryear style](citation-styles/biblatex-authoryear.png)
+![Output of the built-in author-year style](citation-styles/biblatex-authoryear.png)
 
-Source: [biblatex-authoryear.tex](citation-styles/biblatex-authoryear.tex)
+Source: [`biblatex-authoryear.tex`](citation-styles/biblatex-authoryear.tex)
 
 - Good, because no additional package is needed and both looks (author-year, number) are available with `style=authoryear` or `style=numeric`.
 - Good, because the styles are generic and configurable (`maxnames`, `giveninits`, `doi`, `url`, ...).
@@ -36,7 +36,7 @@ Source: [biblatex-authoryear.tex](citation-styles/biblatex-authoryear.tex)
 
 ![Output in APA style](citation-styles/biblatex-apa.png)
 
-Source: [biblatex-apa.tex](citation-styles/biblatex-apa.tex)
+Source: [`biblatex-apa.tex`](citation-styles/biblatex-apa.tex)
 
 - Good, because it implements the 7th edition of the APA Publication Manual, the style most often prescribed in psychology, education and the social sciences.
 - Good, because `\autocite` gives "(Knuth, 1984)", `\textcite` gives "Knuth (1984)", and the bibliography is sorted and hanging-indented as APA wants.
@@ -47,7 +47,7 @@ Source: [biblatex-apa.tex](citation-styles/biblatex-apa.tex)
 
 ![Output in MLA style](citation-styles/biblatex-mla.png)
 
-Source: [biblatex-mla.tex](citation-styles/biblatex-mla.tex)
+Source: [`biblatex-mla.tex`](citation-styles/biblatex-mla.tex)
 
 - Good, because it implements MLA 9th edition (`style=mla`); the 7th edition is available as `style=mla7`.
 - Good, because citations are author-page as MLA wants: `\autocite[12]{knuth1984}` gives "(Knuth 12)".
@@ -59,13 +59,13 @@ Author-date:
 
 ![Output in Chicago author-date style](citation-styles/biblatex-chicago-authordate.png)
 
-Source: [biblatex-chicago-authordate.tex](citation-styles/biblatex-chicago-authordate.tex)
+Source: [`biblatex-chicago-authordate.tex`](citation-styles/biblatex-chicago-authordate.tex)
 
 Notes:
 
 ![Output in Chicago notes style](citation-styles/biblatex-chicago-notes.png)
 
-Source: [biblatex-chicago-notes.tex](citation-styles/biblatex-chicago-notes.tex)
+Source: [`biblatex-chicago-notes.tex`](citation-styles/biblatex-chicago-notes.tex)
 
 - Good, because the package is loaded instead of `biblatex` (`\usepackage[authordate]{biblatex-chicago}` or `[notes]`) and `\autocite` then gives either "(Knuth 1984)" or a footnote with the full reference on first citation and a short form afterwards.
 - Good, because both Chicago systems are covered: author-date (sciences, social sciences) and notes-bibliography (humanities).
@@ -77,7 +77,7 @@ Source: [biblatex-chicago-notes.tex](citation-styles/biblatex-chicago-notes.tex)
 
 ![Output in Turabian layout with Chicago notes](citation-styles/turabian-formatting.png)
 
-Source: [turabian-formatting.tex](citation-styles/turabian-formatting.tex)
+Source: [`turabian-formatting.tex`](citation-styles/turabian-formatting.tex)
 
 - Good, because Turabian is Chicago for students (same citation rules) and the package adds the page layout of the 9th edition of Turabian's manual: double spacing, indented footnotes, title page, with the classes `turabian-researchpaper` and `turabian-thesis`.
 - Good, because citations come from `biblatex-chicago`, so switching between notes and author-date is the same option.
@@ -87,7 +87,7 @@ Source: [turabian-formatting.tex](citation-styles/turabian-formatting.tex)
 
 ![Output in IEEE style](citation-styles/biblatex-ieee.png)
 
-Source: [biblatex-ieee.tex](citation-styles/biblatex-ieee.tex)
+Source: [`biblatex-ieee.tex`](citation-styles/biblatex-ieee.tex)
 
 - Good, because `style=ieee` gives numbered citations "[1]" and the bibliography of the IEEE Reference Guide, with `biblatex`'s flexibility (`\textcite`, `\citeauthor`, back references).
 - Good, because it is maintained by the author of `siunitx`.

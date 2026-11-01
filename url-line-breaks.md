@@ -16,7 +16,7 @@ How to break long URLs?
 
 ### `url` with option `hyphens`
 
-- Good, because it is the standard package, loaded by hyperref and many classes.
+- Good, because it is the standard package, loaded by `hyperref` and many classes.
 - Bad, because it breaks only at a few characters (`/`, `.`, `-`, …); a long segment without them, such as a commit hash, runs into the margin.
 
 ### `url` with additional break points
@@ -27,5 +27,5 @@ How to break long URLs?
 ### `xurl`
 
 - Good, because it allows breaks after any character, so no URL runs into the margin.
-- Good, because it sets biblatex's URL penalties when loaded after biblatex, and leaves them alone when loaded before.
+- Good, because it sets `biblatex`'s URL penalties when loaded after `biblatex`, and leaves them alone when loaded before.
 - Bad, because a URL may break inside a word, which is harder to read.

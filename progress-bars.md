@@ -24,7 +24,7 @@ How to show the writing progress?
 
 ### `progressbar`
 
-- Good, because it only draws a bar (`\progressbar{0.6}`) and leaves the headings alone, so it works with KOMA-Script, hyperref, and appendices.
+- Good, because it only draws a bar (`\progressbar{0.6}`) and leaves the headings alone, so it works with KOMA-Script, `hyperref`, and appendices.
 - Good, because width, height, colors, and ticks are configurable.
 - Neutral, because it is placed by hand below the heading, and hiding all bars needs a small wrapper macro.
 - Bad, because it does not write a progress report.
