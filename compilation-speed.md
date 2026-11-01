@@ -103,7 +103,7 @@ TeX Live stores `lualatex.fmt` and `pdflatex.fmt` compressed; the engine inflate
 
 On the bare IEEE paper of the comparison (3 pages, `bibtex`), a full build with `latexmk` (engine, `bibtex`, reruns), warm caches:
 
-| Toolchain | Full build | One engine run |
+| Engine and build tool | Full build | One engine run |
 | --- | --- | --- |
 | pdfLaTeX + `latexmk` | 0.59 s | 0.17 s |
 | XeLaTeX + `latexmk` | 0.83 s | 0.29 s |
