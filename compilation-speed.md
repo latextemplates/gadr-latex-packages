@@ -101,6 +101,17 @@ TeX Live stores `lualatex.fmt` and `pdflatex.fmt` compressed; the engine inflate
 
 ### Another engine
 
-- Good, because pdfLaTeX is faster than LuaLaTeX for the same document (4.6 s against 7.6 s here): no Lua font loader, Type 1 fonts.
-- Good, because Tectonic bundles XeTeX with its own file lookup and is reported faster than XeLaTeX.
-- Bad, because the templates chose LuaLaTeX for correct ligatures and OpenType fonts (ADR-0010 and ADR-0013 of the generator), so switching the engine trades typography for speed; and Tectonic is not TeX Live, so `Texlivefile`, `latexmk` and the CI setup do not apply.
+On the bare IEEE paper of the comparison (3 pages, `bibtex`), a full build with `latexmk` (engine, `bibtex`, reruns), warm caches:
+
+| Toolchain | Full build | One engine run |
+| --- | --- | --- |
+| pdfLaTeX + `latexmk` | 0.59 s | 0.17 s |
+| XeLaTeX + `latexmk` | 0.83 s | 0.29 s |
+| LuaLaTeX + `latexmk` | 1.10 s | 0.42 s |
+| Tectonic 0.17 (XeTeX engine, own build loop) | 0.45 s | (4 passes inside) |
+
+- Good, because pdfLaTeX is faster than LuaLaTeX for the same document (4.6 s against 7.6 s for the thesis): no Lua font loader, Type 1 fonts.
+- Good, because Tectonic needs no `latexmk`: one command runs the engine and `bibtex` as often as needed, and with its own file lookup the full build is faster than `latexmk` with pdfLaTeX, and almost twice as fast as with XeLaTeX.
+- Bad, because the saving is a fraction of a second per build: the body of a long document costs the same in every engine (XeLaTeX needs 4.9 s for the thesis, pdfLaTeX 4.6 s).
+- Bad, because Tectonic is not TeX Live: it downloads its own package bundle (97 s on the first run here), so `Texlivefile`, the CI setup and `latexmk` do not apply, `--shell-escape` (`minted`, `gitver`) is off unless `-Z shell-escape` is given, and it stops at every LaTeX error that `latexmk` would run through. The example thesis did not compile with it: `microtype` needs `expansion=false` and no `\DisableLigatures` under XeTeX, and then an option clash of `xcolor` with the bundle's package versions stopped the run.
+- Bad, because the templates chose LuaLaTeX for correct ligatures and OpenType fonts (ADR-0010 and ADR-0013 of the generator), so switching the engine trades typography for speed; and XeTeX, the engine behind Tectonic, is maintained but no longer developed.
