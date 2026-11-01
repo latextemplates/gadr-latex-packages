@@ -39,7 +39,7 @@ Every later run loads the format instead of reading the packages: `pdflatex -fmt
 
 - Good, because the packages are no longer parsed on every run: 4.6 s became 3.4 s for the example thesis with pdfLaTeX (26 % less).
 - Good, because the document stays unchanged; the format is a build artifact next to the `.aux` files.
-- Bad, because it does not work with LuaLaTeX: Lua states and the fonts that `fontspec` loads cannot be dumped, and the dump of the example thesis aborts. The same holds for XeLaTeX in many cases ([tex.sx 521482](https://tex.stackexchange.com/a/521482/9075) shows the hand work needed per package).
+- Bad, because it does not work with LuaLaTeX: Lua states and the fonts that `fontspec` loads cannot be dumped, and the dump of the example thesis aborts. Dumping only the first part of the preamble (`\csname endofdump\endcsname` before `fontspec`) produces a format, but a run with it fails on the first line with `attempt to index a nil value (global 'shellesc')`: every Lua module the dumped packages loaded is missing, and the rest cascades. Restoring them by hand per package in `\everyjob` is what [tex.sx 521482](https://tex.stackexchange.com/a/521482/9075) shows for a single package. The same holds for XeLaTeX in many cases.
 - Bad, because a run with the format skips the preamble of the `.tex` file altogether: an edited preamble is silently ignored (a `\typeout` or a new `\newcommand` added before `\begin{document}` never runs) until the format is dumped again, and the same holds for a package updated by TeX Live. `latexmk` sees the changed `.tex` file and reruns the engine, but has no rule that rebuilds the format, so the author has to do it by hand or write a custom rule.
 - Bad, because the saving is a constant per run (the package loading), so it matters for short documents and fades for long ones; the body is typeset as before.
 - Bad, because the package is from 2011; it still works, but nobody maintains it.
@@ -82,6 +82,7 @@ A Python tool that starts the engine before the file is saved, lets it process t
 
 - Good, because `\pdfcompresslevel=0` and `\pdfobjcompresslevel=0` (pdfTeX; `\pdfvariable compresslevel` with LuaTeX) save the time spent on zlib, which can be a third of a run for image-heavy documents; XeLaTeX has `-output-driver='xdvipdfmx -z3'`.
 - Bad, because the PDF grows by an order of magnitude, so the lines have to be removed for the final version.
+- Bad, because the level is frozen once the first PDF object is written, which `hyperref` and other packages do in the preamble: set after the packages or at `\begin{document}`, the lines have no effect at all; before `\documentclass` they work. For the example thesis (0.5 MB of PDF) the run takes 7.7 s with and without compression, so there is nothing to gain unless the document carries many large images.
 
 ### Fewer and quieter runs
 
