@@ -8,7 +8,7 @@ split by a diagonal line. How to draw a diagonally divided header cell?
 ## Considered Options
 
 - [`diagbox`](https://ctan.org/pkg/diagbox)
-- slashbox (obsolete)
+- `slashbox` (obsolete)
 - manual TikZ
 
 ## Pros and Cons of the Options
@@ -16,14 +16,14 @@ split by a diagonal line. How to draw a diagonally divided header cell?
 ### `diagbox`
 
 - Good, because `\diagbox{row}{col}` draws the diagonal and places both labels, measuring the cell automatically.
-- Good, because it is the maintained successor to slashbox.
+- Good, because it is the maintained successor to `slashbox`.
 - Bad, because very tall multi-line entries can still need manual width hints.
 
 ### `slashbox`
 
-- Bad, because it is obsolete and unmaintained; diagbox replaces it.
+- Bad, because it is obsolete and unmaintained; `diagbox` replaces it.
 
 ### manual TikZ
 
 - Good, because it gives full control for unusual splits.
-- Bad, because it is a lot of code for what diagbox does in one macro.
+- Bad, because it is a lot of code for what `diagbox` does in one macro.

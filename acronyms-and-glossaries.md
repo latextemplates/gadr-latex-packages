@@ -38,4 +38,4 @@ managed?
 
 ## More Information
 
-A discussion on glossaries versus acro: <https://tex.stackexchange.com/questions/309203/glossaries-vs-acro>.
+A discussion on glossaries versus `acro`: <https://tex.stackexchange.com/questions/309203/glossaries-vs-acro>.

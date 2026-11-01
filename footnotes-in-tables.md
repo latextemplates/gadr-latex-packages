@@ -30,7 +30,7 @@ How to set footnotes in tables?
 ### `tabularray` with `talltblr`
 
 - Good, because `talltblr` sets table footnotes under the table with one package that also replaces `tabular`.
-- Bad, because it means switching the table syntax of the whole document to tabularray.
+- Bad, because it means switching the table syntax of the whole document to `tabularray`.
 
 ### `\footnotemark` and `\footnotetext` by hand
 

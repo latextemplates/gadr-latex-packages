@@ -20,7 +20,7 @@ How to shrink the images in the PDF?
 - Good, because it is lossless with `compress=flat` and downsamples only above a resolution limit (300 dpi by default).
 - Bad, because it needs shell escape, an external `pdflatex` and Ghostscript on the machine.
 - Bad, because `compress=flat` is broken as shipped: it passes the filter name "FlatEncode" to Ghostscript, which expects `FlateEncode`; a one-line redefinition after loading fixes it ([xqms/graphicscache#30](https://github.com/xqms/graphicscache/issues/30)).
-- Bad, because it parses the `\includegraphics` options itself and rejects the `alt` key of graphicx, which the markdown package sets ([xqms/graphicscache#29](https://github.com/xqms/graphicscache/issues/29)).
+- Bad, because it parses the `\includegraphics` options itself and rejects the `alt` key of `graphicx`, which the markdown package sets ([xqms/graphicscache#29](https://github.com/xqms/graphicscache/issues/29)).
 
 ### downsample the image files before including them
 
