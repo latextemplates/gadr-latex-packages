@@ -27,6 +27,7 @@ The thread [Speeding up LaTeX compilation](https://tex.stackexchange.com/q/8791/
 - Avoid heavy packages and raster images; cache images ([`graphicscache`](https://ctan.org/pkg/graphicscache))
 - Less compression of the PDF while drafting
 - Fewer and quieter runs: [`latexmk`](https://ctan.org/pkg/latexmk), `-interaction=batchmode`
+- An unzipped copy of the engine's format file
 - Another engine: pdfLaTeX instead of LuaLaTeX, or [Tectonic](https://tectonic-typesetting.github.io/)
 
 ## Pros and Cons of the Options
@@ -49,8 +50,8 @@ A Python tool that starts the engine before the file is saved, lets it process t
 
 - Good, because the PDF appears sooner after saving: the preamble time is spent while the author is still typing.
 - Good, because it works with LuaLaTeX and `fontspec`: no format is dumped, the engine process just waits.
-- Bad, because it is not on CTAN; it is installed with `pip` plus a `.sty` from its repository, so it is a tool of one author's machine, not of the template.
-- Bad, because its `latexmk` emulation runs no `biber` and no index tool, does not track changed included files, and may rerun too seldom for references, so it cannot replace the `latexmk` setup of the templates; it is for the edit loop of one file, with a real `latexmk` run before handing in.
+- Bad, because it is not on CTAN; it is [installed with `pip` from PyPI or from the repository](https://github.com/user202729/tex-fast-recompile#manual-installation-from-source-github) plus a `.sty` from its repository, so it is a tool of one author's machine, not of the template.
+- Bad, because its `latexmk` emulation runs no `biber` ([issue 24](https://github.com/user202729/tex-fast-recompile/issues/24)) and no index tool, does not track changed included files, and may rerun too seldom for references, so it cannot replace the `latexmk` setup of the templates; it is for the edit loop of one file, with a real `latexmk` run before handing in.
 - Bad, because the preamble must not read other files that change, and `tikz` externalization has no workaround.
 
 ### Compile only a part of the document
@@ -87,6 +88,15 @@ A Python tool that starts the engine before the file is saved, lets it process t
 - Good, because `latexmk` reruns the engine, `biber` and `makeglossaries` only when their inputs changed; a hand-written "run three times" script wastes runs.
 - Good, because `-interaction=batchmode` (or `-quiet` of `latexmk`) saves the terminal output, which is measurable on slow terminals.
 - Bad, because `latexmk` still has to run the engine at least once per change; this option limits waste, it does not make a run faster.
+
+### An unzipped copy of the engine's format file
+
+TeX Live stores `lualatex.fmt` and `pdflatex.fmt` compressed; the engine inflates them at every start.
+`gunzip < "$(kpsewhich -engine=luahbtex lualatex.fmt)" > lualatexunzipped.fmt` once, then `lualatex '&lualatexunzipped' main.tex` ([tex.sx 708544](https://tex.stackexchange.com/a/708544/9075)).
+
+- Good, because it costs nothing in the document and works with every engine and package.
+- Bad, because it relies on an implementation detail of the engines, the copy has to be redone after a TeX Live update, and the saving is a fixed fraction of a second per run, which disappears in a real document: 7.7 s against 7.6 s for the example thesis (the answer measures 0.13 s on a one-line file).
+- Bad, because `latexmk` and editors have to be told about the custom format name.
 
 ### Another engine
 
