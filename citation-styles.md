@@ -24,7 +24,7 @@ Sources and images are in [citation-styles/](citation-styles/); all examples cit
 
 ### `biblatex` with `authoryear` or `numeric`
 
-![biblatex authoryear](citation-styles/biblatex-authoryear.png)
+![biblatex, style authoryear](citation-styles/biblatex-authoryear.png)
 
 Source: [biblatex-authoryear.tex](citation-styles/biblatex-authoryear.tex)
 
@@ -40,7 +40,7 @@ Source: [biblatex-apa.tex](citation-styles/biblatex-apa.tex)
 
 - Good, because it implements the 7th edition of the APA Publication Manual, the style most often prescribed in psychology, education and the social sciences.
 - Good, because `\autocite` gives "(Knuth, 1984)", `\textcite` gives "Knuth (1984)", and the bibliography is sorted and hanging-indented as APA wants.
-- Good, because the author maintains it closely in step with biblatex and biber.
+- Good, because the author maintains it closely in step with `biblatex` and `biber`.
 - Bad, because it needs `biber`; BibTeX cannot process it.
 
 ### `biblatex-mla`
@@ -57,7 +57,7 @@ Source: [biblatex-mla.tex](citation-styles/biblatex-mla.tex)
 
 Author-date:
 
-![biblatex-chicago authordate](citation-styles/biblatex-chicago-authordate.png)
+![biblatex-chicago, option authordate](citation-styles/biblatex-chicago-authordate.png)
 
 Source: [biblatex-chicago-authordate.tex](citation-styles/biblatex-chicago-authordate.tex)
 
@@ -91,11 +91,11 @@ Source: [biblatex-ieee.tex](citation-styles/biblatex-ieee.tex)
 
 - Good, because `style=ieee` gives numbered citations "[1]" and the bibliography of the IEEE Reference Guide, with biblatex's flexibility (`\textcite`, `\citeauthor`, back references).
 - Good, because it is maintained by the author of `siunitx`.
-- Bad, because IEEE's own class `IEEEtran` expects BibTeX with `IEEEtran.bst`; a paper submitted to IEEE has to use that, and `biblatex-ieee` is for documents that want the IEEE look elsewhere (e.g., a thesis).
+- Bad, because the IEEE class `IEEEtran` expects BibTeX with `IEEEtran.bst`; a paper submitted to IEEE has to use that, and `biblatex-ieee` is for documents that want the IEEE look elsewhere (e.g., a thesis).
 
 ### BibTeX styles
 
 - Good, because `apacite`, `IEEEtran.bst`, `splncs04.bst` and `ACM-Reference-Format.bst` are what the respective publishers ship and expect, and they work with plain BibTeX.
-- Good, because they work with `natbib`, which many classes (IEEEtran, acmart, llncs) load themselves.
+- Good, because they work with `natbib`, which many classes (`IEEEtran`, `acmart`, `llncs`) load themselves.
 - Bad, because a BibTeX style is a program in a stack language of its own: adapting one (a changed field order, a localized "and") is hard, while a biblatex style is LaTeX.
-- Bad, because BibTeX does not handle UTF-8, sorting of non-ASCII names, or `@online` entries with access dates well; biber does.
+- Bad, because BibTeX does not handle UTF-8, sorting of non-ASCII names, or `@online` entries with access dates well; `biber` does.
