@@ -39,7 +39,7 @@ Every later run loads the format instead of reading the packages: `pdflatex -fmt
 - Good, because the packages are no longer parsed on every run: 4.6 s became 3.4 s for the example thesis with pdfLaTeX (26 % less).
 - Good, because the document stays unchanged; the format is a build artifact next to the `.aux` files.
 - Bad, because it does not work with LuaLaTeX: Lua states and the fonts that `fontspec` loads cannot be dumped, and the dump of the example thesis aborts. The same holds for XeLaTeX in many cases ([tex.sx 521482](https://tex.stackexchange.com/a/521482/9075) shows the hand work needed per package).
-- Bad, because the format has to be rebuilt after every change to the preamble or to any package it contains (a TeX Live update), which a build tool has to notice; `latexmk` has no rule for it.
+- Bad, because a run with the format skips the preamble of the `.tex` file altogether: an edited preamble is silently ignored (a `\typeout` or a new `\newcommand` added before `\begin{document}` never runs) until the format is dumped again, and the same holds for a package updated by TeX Live. `latexmk` sees the changed `.tex` file and reruns the engine, but has no rule that rebuilds the format, so the author has to do it by hand or write a custom rule.
 - Bad, because the saving is a constant per run (the package loading), so it matters for short documents and fades for long ones; the body is typeset as before.
 - Bad, because the package is from 2011; it still works, but nobody maintains it.
 
