@@ -24,7 +24,7 @@ Sources and images are in [citation-styles/](citation-styles/); all examples cit
 
 ### `biblatex` with `authoryear` or `numeric`
 
-![biblatex, style authoryear](citation-styles/biblatex-authoryear.png)
+![Output of the built-in authoryear style](citation-styles/biblatex-authoryear.png)
 
 Source: [biblatex-authoryear.tex](citation-styles/biblatex-authoryear.tex)
 
@@ -34,7 +34,7 @@ Source: [biblatex-authoryear.tex](citation-styles/biblatex-authoryear.tex)
 
 ### `biblatex-apa`
 
-![biblatex-apa](citation-styles/biblatex-apa.png)
+![Output in APA style](citation-styles/biblatex-apa.png)
 
 Source: [biblatex-apa.tex](citation-styles/biblatex-apa.tex)
 
@@ -45,7 +45,7 @@ Source: [biblatex-apa.tex](citation-styles/biblatex-apa.tex)
 
 ### `biblatex-mla`
 
-![biblatex-mla](citation-styles/biblatex-mla.png)
+![Output in MLA style](citation-styles/biblatex-mla.png)
 
 Source: [biblatex-mla.tex](citation-styles/biblatex-mla.tex)
 
@@ -57,13 +57,13 @@ Source: [biblatex-mla.tex](citation-styles/biblatex-mla.tex)
 
 Author-date:
 
-![biblatex-chicago, option authordate](citation-styles/biblatex-chicago-authordate.png)
+![Output in Chicago author-date style](citation-styles/biblatex-chicago-authordate.png)
 
 Source: [biblatex-chicago-authordate.tex](citation-styles/biblatex-chicago-authordate.tex)
 
 Notes:
 
-![biblatex-chicago notes](citation-styles/biblatex-chicago-notes.png)
+![Output in Chicago notes style](citation-styles/biblatex-chicago-notes.png)
 
 Source: [biblatex-chicago-notes.tex](citation-styles/biblatex-chicago-notes.tex)
 
@@ -75,7 +75,7 @@ Source: [biblatex-chicago-notes.tex](citation-styles/biblatex-chicago-notes.tex)
 
 ### `turabian-formatting`
 
-![turabian-formatting](citation-styles/turabian-formatting.png)
+![Output in Turabian layout with Chicago notes](citation-styles/turabian-formatting.png)
 
 Source: [turabian-formatting.tex](citation-styles/turabian-formatting.tex)
 
@@ -85,7 +85,7 @@ Source: [turabian-formatting.tex](citation-styles/turabian-formatting.tex)
 
 ### `biblatex-ieee`
 
-![biblatex-ieee](citation-styles/biblatex-ieee.png)
+![Output in IEEE style](citation-styles/biblatex-ieee.png)
 
 Source: [biblatex-ieee.tex](citation-styles/biblatex-ieee.tex)
 
