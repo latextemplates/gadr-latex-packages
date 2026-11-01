@@ -24,7 +24,7 @@ LuaTeX inserts the break points also inside boxes when `\mathpenaltiesmode=1` is
 ### `footmisc` with option `para`
 
 ```latex
-\usepackage[para]{`footmisc`}
+\usepackage[para]{footmisc}
 \mathpenaltiesmode=1 % LuaLaTeX only: lets URLs break inside the footnote paragraph
 ```
 

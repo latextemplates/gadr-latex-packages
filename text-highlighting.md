@@ -27,7 +27,7 @@ How to highlight a passage of text so that it breaks across lines?
 ### `lua-ul`
 
 ```latex
-\usepackage{`luacolor`,lua-ul}
+\usepackage{luacolor,lua-ul}
 \highLight[yellow!60]{text}
 ```
 

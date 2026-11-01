@@ -35,8 +35,8 @@ Source: [pdfcomment.tex](todo-package/pdfcomment.tex)
 Needs some configuration:
 
 ```latex
-\newcommand{\commentontext}[2]{\colorbox{yellow!60}{#1}\`pdfcomment`[color={0.234 0.867 0.211},hoffset=-6pt,voffset=10pt,opacity=0.5]{#2}}
-\newcommand{\commentatside}[1]{\`pdfcomment`[color={0.045 0.278 0.643},icon=Note]{#1}}
+\newcommand{\commentontext}[2]{\colorbox{yellow!60}{#1}\pdfcomment[color={0.234 0.867 0.211},hoffset=-6pt,voffset=10pt,opacity=0.5]{#2}}
+\newcommand{\commentatside}[1]{\pdfcomment[color={0.045 0.278 0.643},icon=Note]{#1}}
 ```
 
 - Good, because uses PDF features
