@@ -30,7 +30,7 @@ Source: [biblatex-authoryear.tex](citation-styles/biblatex-authoryear.tex)
 
 - Good, because no additional package is needed and both looks (author-year, number) are available with `style=authoryear` or `style=numeric`.
 - Good, because the styles are generic and configurable (`maxnames`, `giveninits`, `doi`, `url`, ...).
-- Bad, because they follow no published style guide: "(visited on 11/01/2026)" and "1.2, pp. 77--101" are biblatex's own conventions, which a department prescribing APA or Chicago does not accept.
+- Bad, because they follow no published style guide: "(visited on 11/01/2026)" and "1.2, pp. 77--101" are `biblatex`'s own conventions, which a department prescribing APA or Chicago does not accept.
 
 ### `biblatex-apa`
 
@@ -67,7 +67,7 @@ Notes:
 
 Source: [biblatex-chicago-notes.tex](citation-styles/biblatex-chicago-notes.tex)
 
-- Good, because the package is loaded instead of biblatex (`\usepackage[authordate]{biblatex-chicago}` or `[notes]`) and `\autocite` then gives either "(Knuth 1984)" or a footnote with the full reference on first citation and a short form afterwards.
+- Good, because the package is loaded instead of `biblatex` (`\usepackage[authordate]{biblatex-chicago}` or `[notes]`) and `\autocite` then gives either "(Knuth 1984)" or a footnote with the full reference on first citation and a short form afterwards.
 - Good, because both Chicago systems are covered: author-date (sciences, social sciences) and notes-bibliography (humanities).
 - Good, because the implementation is complete and well documented (the manual is over 100 pages) and handles the many entry types of the Chicago Manual.
 - Bad, because the package in TeX Live 2026 (version 2.3b) implements the 17th edition; the 18th edition (2024) is not covered yet.
@@ -89,7 +89,7 @@ Source: [turabian-formatting.tex](citation-styles/turabian-formatting.tex)
 
 Source: [biblatex-ieee.tex](citation-styles/biblatex-ieee.tex)
 
-- Good, because `style=ieee` gives numbered citations "[1]" and the bibliography of the IEEE Reference Guide, with biblatex's flexibility (`\textcite`, `\citeauthor`, back references).
+- Good, because `style=ieee` gives numbered citations "[1]" and the bibliography of the IEEE Reference Guide, with `biblatex`'s flexibility (`\textcite`, `\citeauthor`, back references).
 - Good, because it is maintained by the author of `siunitx`.
 - Bad, because the IEEE class `IEEEtran` expects BibTeX with `IEEEtran.bst`; a paper submitted to IEEE has to use that, and `biblatex-ieee` is for documents that want the IEEE look elsewhere (e.g., a thesis).
 
@@ -97,5 +97,5 @@ Source: [biblatex-ieee.tex](citation-styles/biblatex-ieee.tex)
 
 - Good, because `apacite`, `IEEEtran.bst`, `splncs04.bst` and `ACM-Reference-Format.bst` are what the respective publishers ship and expect, and they work with plain BibTeX.
 - Good, because they work with `natbib`, which many classes (`IEEEtran`, `acmart`, `llncs`) load themselves.
-- Bad, because a BibTeX style is a program in a stack language of its own: adapting one (a changed field order, a localized "and") is hard, while a biblatex style is LaTeX.
+- Bad, because a BibTeX style is a program in a stack language of its own: adapting one (a changed field order, a localized "and") is hard, while a `biblatex` style is LaTeX.
 - Bad, because BibTeX does not handle UTF-8, sorting of non-ASCII names, or `@online` entries with access dates well; `biber` does.
