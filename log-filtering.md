@@ -42,14 +42,14 @@ Measured on the thesis template (`main-english.tex`, LuaLaTeX, TeX Live 2026):
 - Good, because it is one Perl script (public domain, Karl Berry, in TeX Live) that wraps the engine call: `texfot lualatex main.tex` prints only the lines that probably deserve a change in the source, 97 instead of 4365 here.
 - Good, because it works with every engine and format and keeps the order of the run.
 - Bad, because it reads the terminal output, not the log: it has to run the engine itself, so it does not fit into a `latexmk` setup except as `-pdflatex="texfot lualatex %O %S"`.
-- Bad, because a wrapped message is cut after 79 characters and a repeated warning (hyperref printed "Token not allowed in a PDF string" eleven times) is repeated.
+- Bad, because a wrapped message is cut after 79 characters and a repeated warning (`hyperref` printed "Token not allowed in a PDF string" eleven times) is repeated.
 
 ### `texlogsieve`
 
 - Good, because it reads the log file (or a pipe) after the run, so it fits any build setup: `latexmk main.tex; texlogsieve main.log`, in a Makefile target, or in a CI step summary.
 - Good, because it unwraps the 79-character lines, keeps multi-line messages together, groups them by file and page, collapses repetitions, and ends with a summary of undefined references, citations, and bad boxes.
 - Good, because it is configurable without touching the document: `--silence-package`, `--silence-string`, `--minlevel`, and a `texlogsieverc` file in the project.
-- Bad, because the grouped report is longer than texfot's (169 lines here) and starts with `INFO` lines of packages (Lua module registrations, `new hooks used!!`), which need a `texlogsieverc` to go away.
+- Bad, because the grouped report is longer than the one of `texfot` (169 lines here) and starts with `INFO` lines of packages (Lua module registrations, `new hooks used!!`), which need a `texlogsieverc` to go away.
 - Bad, because its log parser can trip over an unusual line (a parsing error near line 3885 of this log, after which the rest is skipped).
 - Bad, because it is LaTeX only (no ConTeXt or plain TeX) and GPL, which matters only when it is shipped with something.
 
