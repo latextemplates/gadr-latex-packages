@@ -21,7 +21,7 @@ How to see these messages without reading the whole log, and without hiding anyt
 Measured on the thesis template (`main-english.tex`, LuaLaTeX, TeX Live 2026):
 
 | Option | Lines shown | What is left |
-|--|--|--|
+| -- | -- | -- |
 | log file | 4365 | everything |
 | `texfot lualatex main-english.tex` | 97 | warnings and errors, in the order of the run |
 | `texlogsieve < main-english.log` | 169 | warnings grouped by file and page, then a summary |
