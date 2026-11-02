@@ -25,6 +25,7 @@ Measured on the thesis template (`main-english.tex`, LuaLaTeX, TeX Live 2026):
 | log file | 4365 | everything |
 | `texfot lualatex main-english.tex` | 97 | warnings and errors, in the order of the run |
 | `texlogsieve < main-english.log` | 169 | warnings grouped by file and page, then a summary |
+| `texloganalyser -w main-english.log` | 35 | the first line of each warning; no errors |
 
 ### Read the log or the terminal output
 
@@ -54,8 +55,10 @@ Measured on the thesis template (`main-english.tex`, LuaLaTeX, TeX Live 2026):
 
 ### `texloganalyser`
 
-- Good, because it is a small Perl script in TeX Live that answers one question at a time (bad boxes, fonts, end of the log) through flags.
-- Bad, because it does not filter the warnings themselves; it selects categories, so it answers "how many bad boxes" rather than "what do I have to fix".
+- Good, because it is a small Perl script in TeX Live (BSD, version 0.11 of 2020) that answers one question at a time through a flag: `-w` all warnings, `-r` undefined references, `-o` overfull boxes, `-s` the loaded `.sty` files, `-e` the end of the log.
+- Good, because `-w` is the shortest list of the three tools (35 lines here): one line per warning.
+- Bad, because it prints only the first line of a warning: "Font shape `TU/Inconsolatazi4(0)/m/sl' undefined" appears without the following line that names the input line, and a wrapped message is cut.
+- Bad, because it shows no errors: the `!` lines of the log appear in no mode (checked with an undefined macro), so it is for a run that finished, not for finding why one did not.
 
 ### The `silence` package
 
@@ -75,6 +78,7 @@ Measured on the thesis template (`main-english.tex`, LuaLaTeX, TeX Live 2026):
 Do not filter at the source: `silence` hides messages from every reader at once.
 Filter when reading: `texlogsieve` on the log file after the run, since it fits `latexmk`, a Makefile target (`make log`), and a CI step summary, and its project-level `texlogsieverc` records which messages are known noise.
 `texfot` is the lighter choice for an interactive run outside `latexmk`.
+`texloganalyser -r` or `-o` answers one question (which references are undefined, which lines overfull) with the shortest output.
 A warning that is known noise is silenced in the tool's configuration, where it is visible, not in the document.
 
 References: [scientific-thesis-template#68](https://github.com/latextemplates/scientific-thesis-template/issues/68), [scientific-thesis-template#23](https://github.com/latextemplates/scientific-thesis-template/issues/23).
