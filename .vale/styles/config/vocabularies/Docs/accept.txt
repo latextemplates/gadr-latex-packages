@@ -1,12 +1,13 @@
 ADRs
 Auflage
 diffable
-(?i)downsamples?
 fi
 Ghostscript
 Graphviz
 hardcoded
+(?i)downsamples?
 interword
+(?i)precompiled
 latextemplates
 Lua
 Makefile
@@ -20,3 +21,4 @@ TeX's
 textlint
 TODOs
 Turabian
+zlib
