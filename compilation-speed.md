@@ -12,6 +12,7 @@ The measurements below are from the English example thesis of [scientific-thesis
 | --- | --- | --- |
 | LuaLaTeX | 7.6 s | 12.2 s on the first run of a session: `luaotfload` builds its font database |
 | pdfLaTeX | 4.6 s | same document, `newtx` fonts instead of `fontspec` |
+| LuaLaTeX, the four TikZ pictures externalized with `memoize` | 7.7 s | no gain: the pictures of the example cost less than 0.1 s per run |
 | pdfLaTeX, preamble precompiled with `mylatex` or `mylatexformat` | 3.4 s | format file of 14 MB; dumping it takes 1.6 s once |
 | LuaLaTeX, preamble precompiled | fails | `mylatexformat`: the dump aborts with `pdf backend: already written content discarded`; `mylatex`: 101 errors while reading the preamble |
 
@@ -23,7 +24,7 @@ The thread [Speeding up LaTeX compilation](https://tex.stackexchange.com/q/8791/
 - [tex-fast-recompile](https://github.com/user202729/tex-fast-recompile) (not on CTAN)
 - Compile only a part of the document: `\includeonly`, [`subfiles`](https://ctan.org/pkg/subfiles)
 - Draft modes: `-draftmode` of the engine and the `draft` class option
-- Externalize TikZ pictures ([`pgf`](https://ctan.org/pkg/pgf), library `external`)
+- Externalize TikZ pictures: [`memoize`](https://ctan.org/pkg/memoize), or the library `external` of [`pgf`](https://ctan.org/pkg/pgf)
 - Avoid heavy packages and raster images; cache images ([`graphicscache`](https://ctan.org/pkg/graphicscache))
 - Less compression of the PDF while drafting
 - Fewer and quieter runs: [`latexmk`](https://ctan.org/pkg/latexmk), `-interaction=batchmode`
@@ -70,9 +71,34 @@ A Python tool that starts the engine before the file is saved, lets it process t
 
 ### Externalize TikZ pictures
 
-- Good, because each `tikzpicture` is compiled once into its own PDF and included as an image afterwards (`\usetikzlibrary{external}`, `\tikzexternalize`); a document with many diagrams gains the most.
-- Good, because `mode=list and make` lets `make -j` build the pictures in parallel.
+Each picture is compiled once and included as a PDF afterwards, so a later run only places the PDF.
+The gain is the compile time of the pictures, nothing else: a synthetic `pgfplots` picture with 20,000 samples takes a run of its one-page document from 5.6 s to 0.5 s, while the four small diagrams of the example thesis (three `tikzpicture`, one `pgf-umlsd` sequence diagram) cost less than 0.1 s, so the run stays at 7.7 s.
+
+#### `memoize`
+
+`\usepackage{memoize}` as the first package; every `tikzpicture` is then externalized automatically, other material with `\begin{memoize}` or `\mmz`.
+The pictures are typeset onto extra pages of the document PDF, which `memoize-extract.pl` cuts into one PDF per picture after the run; the script is on the list of restricted shell-escape commands of TeX Live, so no `--shell-escape` is needed.
+`latexmk` runs the extraction as part of its loop with the `memoize_latexmkrc` from the `example_rcfiles` directory of the [`latexmk`](https://ctan.org/pkg/latexmk) distribution, so the picture PDFs count as dependencies and no run is wasted.
+
+- Good, because the document is unchanged apart from the package line: no job name per picture, no `--shell-escape`, and a changed picture is recompiled on its own because its source is hashed.
+- Good, because a picture that uses `\ref` or `\label` works: the package records the references and replays them (`auto` keys for `\ref`, `\pageref`, `\label` and `\index`).
+- Good, because it hooks into `latexmk` (`memoize_latexmkrc`) and knows `biblatex` and `beamer`.
+- Bad, because it externalizes every `tikzpicture`, also the ones other packages draw internally, and these break or mislead it.
+  In the example thesis three packages needed an exception (verified with `memoize` 1.4.1, TeX Live 2026): `tcolorbox` draws every frame in a `tikzpicture` whose `\end` is not in the source, which fails with `Environment tikzpicture ended as tcb@drawing` (`\AddToHook{env/tcb@drawing/begin}{\mmzset{disable}}` cures it); `progressbar` draws every bar from the same TikZ source, so one bar would be reused for every value (`\mmzset{disable}` in the macro that calls it); `pgf-umlsd`'s `sequencediagram` wraps a `tikzpicture` the same way as `tcolorbox` (`\mmzset{auto={sequencediagram}{memoize}}` externalizes the whole diagram instead).
+  `todonotes` is safe: its notes use `\pdfsavepos`, on which `memoize` aborts by itself.
+- Bad, because the extraction needs the Perl module `PDF::API2` (or Python's `pdfrw`), which TeX Live does not ship: the Island of TeX Docker image has it, a GitHub runner needs `libpdf-api2-perl` from apt.
+- Bad, because the package has to be loaded before anything opens the PDF, else the extraction fails with "File 'main.pdf' seems corrupted"; with `beamer` that means `\RequirePackage{memoize}` before `\documentclass`.
+- Bad, because a wrong picture is silent: if the TikZ source is the same but a macro it uses has another value, the old PDF is reused; the context has to be made part of the hash by hand (`\mmzset{context=...}`).
+
+#### Library `external` of `pgf`
+
+`\usetikzlibrary{external}` and `\tikzexternalize` compile each `tikzpicture` as its own job into a PDF and include it afterwards.
+`latexmk` knows the `mode=list and make` variant through `tikz-externalized-latexmkrc` in its `example_rcfiles`.
+
+- Good, because `mode=list and make` writes a Makefile, so `make -j` builds the pictures in parallel.
+- Bad, because every picture is a full LaTeX run with the whole preamble (seconds each for the thesis), so the first build is much slower than with `memoize`, which typesets the pictures inside the one run.
 - Bad, because it needs `--shell-escape` and a job name per picture; pictures that use macros defined later or `\ref` need care, and `tex-fast-recompile` does not work with it.
+- Bad, because packages that draw with TikZ internally (`tcolorbox`, `todonotes`, `progressbar`) have to be excluded one by one with `\tikzexternaldisable`, the same problem as with `memoize` but without its automatic abort on `\pdfsavepos`.
 
 ### Avoid heavy packages and raster images; cache images
 
