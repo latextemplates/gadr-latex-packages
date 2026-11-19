@@ -1,0 +1,25 @@
+\documentclass[11pt]{article}\usepackage[paperwidth=12cm,paperheight=6cm,margin=5mm]{geometry}\pagestyle{empty}\usepackage{booktabs}
+\usepackage{xcolor} % for the row colors
+\usepackage{tabularray}
+\UseTblrLibrary{booktabs}
+\begin{document}
+\begin{tblr}{
+    colspec = {X[l] Q[r] Q[r] Q[r]},
+    row{1,2} = {font=\bfseries},
+    cell{1}{1} = {r=2}{l,m},
+    cell{1}{2} = {c=2}{c},
+    cell{1}{4} = {r=2}{r,m},
+    row{4,6} = {bg=black!6},
+  }
+  \toprule
+  Algorithm & Runtime (s) &                   & Memory (MB) \\
+  \cmidrule{2-3}
+            & 1\,000      & 1\,000\,000       &             \\
+  \midrule
+  Quicksort & 0.12        & 1.80              & 12          \\
+  Mergesort & 0.15        & 2.10              & 24          \\
+  Heapsort  & 0.20        & 2.40              & 12          \\
+  Timsort   & 0.10        & 1.50              & 18          \\
+  \bottomrule
+\end{tblr}
+\end{document}

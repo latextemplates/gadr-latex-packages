@@ -1,0 +1,19 @@
+\documentclass[11pt]{article}\usepackage[paperwidth=12cm,paperheight=6cm,margin=5mm]{geometry}\pagestyle{empty}\usepackage{booktabs}
+\usepackage{tabularx,multirow}
+\usepackage[table]{xcolor} % loads colortbl
+\begin{document}
+\begin{tabularx}{\linewidth}{Xrrr}
+  \toprule
+  \multirow{2}{*}{\textbf{Algorithm}} & \multicolumn{2}{c}{\textbf{Runtime (s)}} & \multirow{2}{*}{\textbf{Memory (MB)}} \\
+  \cmidrule{2-3}
+                     & \textbf{1\,000} & \textbf{1\,000\,000} &    \\
+  \midrule
+  Quicksort          & 0.12            & 1.80                 & 12 \\
+  \rowcolor{black!6}
+  Mergesort          & 0.15            & 2.10                 & 24 \\
+  Heapsort           & 0.20            & 2.40                 & 12 \\
+  \rowcolor{black!6}
+  Timsort            & 0.10            & 1.50                 & 18 \\
+  \bottomrule
+\end{tabularx}
+\end{document}
