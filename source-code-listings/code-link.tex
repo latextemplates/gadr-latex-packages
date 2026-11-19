@@ -1,0 +1,21 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage{xlistings}
+\LoadLanguages{java}
+\usepackage[hidelinks]{hyperref}
+\usepackage[underline]{code-link}
+\pagestyle{empty}
+\begin{document}
+The class \CodeLinkRef{Greeter} is defined in the first listing; each use of it links there.
+
+\begin{minted}[escapeinside={|}{|}]{java}
+public class |\CodeLinkAnchor{Greeter}|Greeter {
+    String greet(String name) { return "Hello " + name; }
+}
+\end{minted}
+
+\begin{minted}{java}
+Greeter g = new Greeter();
+System.out.println(g.greet("World"));
+\end{minted}
+\end{document}

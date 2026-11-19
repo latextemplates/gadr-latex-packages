@@ -1,0 +1,16 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage{minted} % minted 3 runs latexminted, which the restricted shell escape of TeX Live permits
+\pagestyle{empty}
+\begin{document}
+\begin{minted}[linenos, fontsize=\footnotesize]{java}
+/** Greets the world. */
+public class Hello {
+    private static final int TIMES = 0x1F;
+    @Override
+    public String toString() {
+        return "Hello " + 1.5f; // comment
+    }
+}
+\end{minted}
+\end{document}
