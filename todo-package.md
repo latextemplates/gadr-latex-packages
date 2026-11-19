@@ -11,8 +11,17 @@ How to mark TODO in LaTeX documents?
 - [`pdfcomment`](https://ctan.org/pkg/pdfcomment)
 - [`pdfmarginpar`](https://ctan.org/pkg/pdfmarginpar)
 - [`phfcc`](https://ctan.org/pkg/phfcc)
+- [`luatodonotes`](https://ctan.org/pkg/luatodonotes)
+- [`fixme`](https://ctan.org/pkg/fixme)
+- [`zebra`](https://ctan.org/pkg/zebra)
+- [`snaptodo`](https://ctan.org/pkg/snaptodo)
+- [`smartnotes`](https://ctan.org/pkg/smartnotes)
+- [`easy-todo`](https://ctan.org/pkg/easy-todo)
+- [`fixmetodonotes`](https://ctan.org/pkg/fixmetodonotes)
+- [`todo`](https://ctan.org/pkg/todo)
 
 Sources and images are in [todo-package/](todo-package/).
+For changes requested by the reviewers of a journal, see [How to mark the changes of a revised manuscript](journal-revisions.md).
 
 ## Pros and Cons of the Options
 
@@ -66,3 +75,91 @@ Source: [phfcc.tex](todo-package/phfcc.tex)
 - Good, because `\phfDisableCommentingCommands` hides all comments for the final version.
 - Bad, because comments are typeset into the text and take space, like `todonotes`' inline notes; the `footcomments` style moves them into footnotes.
 - Bad, because there is no list of all comments.
+
+### `luatodonotes`
+
+![TODO notes with leader lines that do not overlap](todo-package/luatodonotes.png)
+
+Source: [luatodonotes.tex](todo-package/luatodonotes.tex)
+
+- Good, because it is a drop-in replacement for `todonotes`: the same `\todo`, `\missingfigure`, and `\listoftodos`, only the `\usepackage` line changes.
+- Good, because it places the notes with algorithms in Lua, so notes and leader lines do not overlap, and notes in floats and footnotes are placed as well.
+- Bad, because it works with LuaLaTeX only; a document that is also compiled with pdfLaTeX needs `todonotes` as fallback.
+- Bad, because it is based on `todonotes` 1.0.2, so options added to `todonotes` later are missing.
+- Bad, because it needs two or three runs to place the notes, and the placement can take noticeably longer than with `todonotes`.
+
+### `fixme`
+
+![FiXme notes of three importance levels in the margin](todo-package/fixme.png)
+
+Source: [fixme.tex](todo-package/fixme.tex)
+
+- Good, because notes have importance levels (`\fxnote`, `\fxwarning`, `\fxerror`, `\fxfatal`): in `final` mode, notes, warnings, and errors disappear, and a remaining `\fxfatal` stops the compilation, so an unfinished document cannot be shipped by accident.
+- Good, because the layout is selectable: inline, margin, footnote, or as PDF annotation (`\fxsetup{layout=pdfmargin}` uses `pdfcomment`); `\listoffixmes` lists all notes.
+- Good, because notes can be assigned to authors (`\FXRegisterAuthor`) and can mark a text range (`\fxnote*{note}{text}`).
+- Bad, because the last release is from 2019.
+- Bad, because the default margin layout uses `\marginpar`, which TeX forbids in captions and footnotes; the `innerlayout` option has to switch to another layout there.
+
+### `zebra`
+
+![Inline TODO with a margin symbol and a summary at the end](todo-package/zebra.png)
+
+Source: [zebra.tex](todo-package/zebra.tex)
+
+- Good, because notes are short inline text with a small numbered symbol in the margin, so the margin stays readable and nothing overlaps.
+- Good, because five note types (`\todo`, `\note`, `\comment`, `\fixed`, `\placeholder`) are numbered per type, can name who is responsible (`\todo[alice]{...}`), and `\zebranewnote` defines further types.
+- Good, because a summary table and a list of all notes, linked to the notes when `hyperref` is loaded, are appended at the end; the `final` option removes notes and lists.
+- Good, because it is maintained (version 2.1.0 from 2026) and places the symbol in the nearer margin in two-column documents.
+- Bad, because the notes stand in the text and take space, like the inline notes of `todonotes`.
+- Bad, because short names that another package already defines (`\todo` of `todonotes`, `\comment` of `mindflow` or `changes`) are not redefined; then only the prefixed form (`\zebratodo`) works.
+
+### `snaptodo`
+
+![Notes in the left and the right margin, whichever is closer](todo-package/snaptodo.png)
+
+Source: [snaptodo.tex](todo-package/snaptodo.tex)
+
+- Good, because `\snaptodo{...}` puts the note into the margin closer to where it is called, and notes and their lines never overlap.
+- Good, because the style is set with TikZ keys (`\snaptodoset`).
+- Bad, because it needs a wide margin on both sides; with a narrow inner margin, notes there are cut off.
+- Bad, because there is no list of all notes and no option to hide the notes for the final version.
+
+### `smartnotes`
+
+![Note in the closer margin with a curved connector](todo-package/smartnotes.png)
+
+Source: [smartnotes.tex](todo-package/smartnotes.tex)
+
+- Good, because `\note{...}` puts the note into the closer margin with a short connector, and the `disable` option hides all notes.
+- Bad, because it is a first release (0.1 from 2026) with basic overlap avoidance only.
+- Bad, because there is no list of all notes, and `\note` is a generic name that other packages define, too.
+
+### `easy-todo`
+
+![Inline TODO and list of TODOs](todo-package/easy-todo.png)
+
+Source: [easy-todo.tex](todo-package/easy-todo.tex)
+
+- Good, because it is small: `\todo` sets the note inline, `\listoftodos` lists them, and `obeyFinal` hides them for `\documentclass[final]`.
+- Bad, because the notes are plain colored text in the line, without a margin marker.
+- Bad, because the last release is from 2014, and it loads `tocloft`, which changes the lists of figures and tables and is not meant for KOMA-Script classes.
+
+### `fixmetodonotes`
+
+![Highlighted TODO text and a FIXME with margin marker](todo-package/fixmetodonotes.png)
+
+Source: [fixmetodonotes.tex](todo-package/fixmetodonotes.tex)
+
+- Good, because `\TODO{...}`, `\FIXME{...}`, and `\CITE{...}` mark the text itself, and `\defnote` defines further kinds; the `watermark` option prints "DRAFT" on every page.
+- Bad, because it needs `hyperref` (it uses `\phantomsection`) and loads many packages (`tocloft`, `watermark`, `transparent`, `ulem`).
+- Bad, because the last release is from 2013.
+
+### `todo`
+
+![Superscript TODO mark and the list at the end](todo-package/todo.png)
+
+Source: [todo.tex](todo-package/todo.tex)
+
+- Good, because the marks do not change the layout (`\todo*` and the option `nothing` hide them), and `\done` checks an item off in the list.
+- Bad, because the text of a TODO is only in the list at the end (`\todos`), not where the TODO is, unless `\Todo` is used.
+- Bad, because the last release is from 2010.
