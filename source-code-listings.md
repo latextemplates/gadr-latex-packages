@@ -51,7 +51,7 @@ Source: [`xlistings.tex`](source-code-listings/xlistings.tex)
 - Good, because line numbers are excluded from copying (`accsupp`), and listings get a light background box.
 - Bad, because the `minted` environment is not a drop-in replacement: its options are `listings` keys (`numbers=left` instead of `linenos`, `escapeinside={|}{|}` instead of `escapeinside=||`), and `\setminted`, `\usemintedstyle`, `\inputminted`, and the `listing` float are missing.
 - Bad, because it defines 24 languages (no BibTeX, for example), and its highlighting stays keyword-based: the inside of a Python f-string is a plain string.
-- Bad, because it is new (version 1.0.0 of 2026-08, in TeX Live 2026): a language that the `minted` environment loads on first use loses some of its macros, so Java and YAML need `\LoadLanguages{java,yaml}` in the preamble ([issue 15](https://github.com/EagleoutIce/xlistings/issues/15)).
+- Bad, because it is new (version 1.0.0 of 2026-08, 1.1.1 of 2026-11 in TeX Live 2026): a language that the `minted` environment loads on first use loses some of its macros, so Java and YAML need `\LoadLanguages{java,yaml}` in the preamble ([issue 15](https://github.com/EagleoutIce/xlistings/issues/15)).
 
 ### `fancyvrb`
 
@@ -73,4 +73,4 @@ Source: [`code-link.tex`](source-code-listings/code-link.tex)
 `code-link` is a companion of `xlistings` by the same author and works with `listings`, `xlistings`, and `minted`.
 `\CodeLinkAnchor{Greeter}` marks a definition (inside a listing through `escapeinside`), and every later occurrence of `Greeter` in a listing becomes a link to it; `\CodeLinkRef{Greeter}` links from the text.
 It suits documents with many listings that refer to each other, such as theses on software.
-Version 1.1.0 is from 2026-11, so it is not yet in every TeX Live 2026 installation and not on Overleaf.
+Version 1.1.0 is from 2026-11: it is in an updated TeX Live 2026, but not on Overleaf, which keeps the snapshot of a TeX Live year.
