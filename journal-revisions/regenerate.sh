@@ -8,9 +8,15 @@ for tex in *.tex; do
   engine=lualatex
   $engine -interaction=nonstopmode "$tex" > /dev/null
   $engine -interaction=nonstopmode "$tex" > /dev/null
-  # A list of TODOs can end up on a page of its own: stack all pages
+  # One image per page: a list of TODOs can end up on a page of its own (<name>-2.png)
   pdftoppm -r 150 -png "$name.pdf" "$name-page"
-  convert "$name"-page-*.png -trim -bordercolor white -border 12 -append "$name.png"
-  rm -f "$name"-page-*.png
+  i=1
+  for page in "$name"-page-*.png; do
+    out="$name.png"
+    [ "$i" -gt 1 ] && out="$name-$i.png"
+    convert "$page" -trim -bordercolor white -border 12 "$out"
+    rm "$page"
+    i=$((i + 1))
+  done
   find . -maxdepth 1 -name "$name.*" ! -name "*.tex" ! -name "*.png" -delete
 done
