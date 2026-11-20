@@ -9,7 +9,15 @@ for tex in *.tex; do
   [ "$name" = pdfmarginpar ] && engine=pdflatex # pdfmarginpar needs pdfTeX's \pdfannot
   $engine -interaction=nonstopmode "$tex" > /dev/null
   $engine -interaction=nonstopmode "$tex" > /dev/null
-  pdftoppm -r 150 -png -singlefile "$name.pdf" "$name"
-  convert "$name.png" -trim -bordercolor white -border 12 "$name.png"
-  rm -f "$name.aux" "$name.log" "$name.out" "$name.pdf" "$name.loc" "$name.soc"
+  # One image per page: a list of TODOs can end up on a page of its own (<name>-2.png)
+  pdftoppm -r 150 -png "$name.pdf" "$name-page"
+  i=1
+  for page in "$name"-page-*.png; do
+    out="$name.png"
+    [ "$i" -gt 1 ] && out="$name-$i.png"
+    convert "$page" -trim -bordercolor white -border 12 "$out"
+    rm "$page"
+    i=$((i + 1))
+  done
+  find . -maxdepth 1 -name "$name.*" ! -name "*.tex" ! -name "*.png" -delete
 done

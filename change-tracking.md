@@ -6,6 +6,7 @@ When several people write a paper, or a supervisor reviews a thesis, additions, 
 How to track changes by several authors in LaTeX?
 
 Sources and images are in [change-tracking/](change-tracking/).
+For the changes requested by the reviewers of a journal, see [How to mark the changes of a revised manuscript](journal-revisions.md).
 
 ## Considered Options
 
