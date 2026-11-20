@@ -1,0 +1,28 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage{xlistings}
+\LoadLanguages{java}
+\usepackage[hidelinks]{hyperref}
+\usepackage[underline]{code-link}
+\pagestyle{empty}
+\begin{document}
+\begin{minipage}{8cm}
+The class \CodeLinkRef{Hello} is defined in the first listing; each use of it links there.
+
+\begin{minted}[numbers=left,escapeinside={|}{|}]{java}
+/** Greets the world. */
+public class |\CodeLinkAnchor{Hello}|Hello {
+    private static final int TIMES = 0x1F;
+    @Override
+    public String toString() {
+        return "Hello " + 1.5f; // comment
+    }
+}
+\end{minted}
+
+\begin{minted}[numbers=left]{java}
+Hello hello = new Hello();
+System.out.println(hello);
+\end{minted}
+\end{minipage}
+\end{document}

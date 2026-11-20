@@ -1,0 +1,23 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage{xlistings}
+% Load the languages in the preamble: a language that the minted environment loads on first use
+% loses some of its macros (Java, YAML), see github.com/EagleoutIce/xlistings/issues/15
+\LoadLanguages{java}
+\pagestyle{empty}
+\begin{document}
+% The minted environment of xlistings takes listings keys: numbers=left instead of linenos
+% The minipage keeps the box (full line width by default) as narrow as the other examples
+\begin{minipage}{8cm}
+\begin{minted}[numbers=left]{java}
+/** Greets the world. */
+public class Hello {
+    private static final int TIMES = 0x1F;
+    @Override
+    public String toString() {
+        return "Hello " + 1.5f; // comment
+    }
+}
+\end{minted}
+\end{minipage}
+\end{document}

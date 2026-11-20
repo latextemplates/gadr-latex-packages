@@ -1,0 +1,19 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage{xcolor}
+\usepackage{listings}
+\lstset{language=Java, basicstyle=\footnotesize\ttfamily, keywordstyle=\color{blue!70!black}\bfseries,
+  commentstyle=\color{green!40!black}\itshape, stringstyle=\color{red!60!black}, numbers=left, numberstyle=\tiny}
+\pagestyle{empty}
+\begin{document}
+\begin{lstlisting}
+/** Greets the world. */
+public class Hello {
+    private static final int TIMES = 0x1F;
+    @Override
+    public String toString() {
+        return "Hello " + 1.5f; // comment
+    }
+}
+\end{lstlisting}
+\end{document}
