@@ -7,6 +7,8 @@
 \pagestyle{empty}
 \begin{document}
 % The minted environment of xlistings takes listings keys: numbers=left instead of linenos
+% The minipage keeps the box (full line width by default) as narrow as the other examples
+\begin{minipage}{8cm}
 \begin{minted}[numbers=left]{java}
 /** Greets the world. */
 public class Hello {
@@ -17,4 +19,5 @@ public class Hello {
     }
 }
 \end{minted}
+\end{minipage}
 \end{document}

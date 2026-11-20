@@ -6,16 +6,23 @@
 \usepackage[underline]{code-link}
 \pagestyle{empty}
 \begin{document}
-The class \CodeLinkRef{Greeter} is defined in the first listing; each use of it links there.
+\begin{minipage}{8cm}
+The class \CodeLinkRef{Hello} is defined in the first listing; each use of it links there.
 
-\begin{minted}[escapeinside={|}{|}]{java}
-public class |\CodeLinkAnchor{Greeter}|Greeter {
-    String greet(String name) { return "Hello " + name; }
+\begin{minted}[numbers=left,escapeinside={|}{|}]{java}
+/** Greets the world. */
+public class |\CodeLinkAnchor{Hello}|Hello {
+    private static final int TIMES = 0x1F;
+    @Override
+    public String toString() {
+        return "Hello " + 1.5f; // comment
+    }
 }
 \end{minted}
 
-\begin{minted}{java}
-Greeter g = new Greeter();
-System.out.println(g.greet("World"));
+\begin{minted}[numbers=left]{java}
+Hello hello = new Hello();
+System.out.println(hello);
 \end{minted}
+\end{minipage}
 \end{document}

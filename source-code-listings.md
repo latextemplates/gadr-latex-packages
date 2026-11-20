@@ -11,12 +11,21 @@ Sources and images are in [source-code-listings/](source-code-listings/).
 
 ## Considered Options
 
+- [`fancyvrb`](https://ctan.org/pkg/fancyvrb) (verbatim only, no highlighting)
 - [`listings`](https://ctan.org/pkg/listings)
 - [`minted`](https://ctan.org/pkg/minted)
 - [`xlistings`](https://ctan.org/pkg/xlistings) (extends `listings`)
-- [`fancyvrb`](https://ctan.org/pkg/fancyvrb) (verbatim only, no highlighting)
 
 ## Pros and Cons of the Options
+
+### `fancyvrb`
+
+![Java code in black, with line numbers only](source-code-listings/fancyvrb.png)
+
+Source: [`fancyvrb.tex`](source-code-listings/fancyvrb.tex)
+
+- Good, because it is the lightweight choice when no highlighting is needed — faithful verbatim with framing and line numbers.
+- Bad, because it does no syntax highlighting at all.
 
 ### `listings`
 
@@ -53,24 +62,16 @@ Source: [`xlistings.tex`](source-code-listings/xlistings.tex)
 - Bad, because it defines 24 languages (no BibTeX, for example), and its highlighting stays keyword-based: the inside of a Python f-string is a plain string.
 - Bad, because it is new (version 1.0.0 of 2026-08, 1.1.1 of 2026-11 in TeX Live 2026): a language that the `minted` environment loads on first use loses some of its macros, so Java and YAML need `\LoadLanguages{java,yaml}` in the preamble ([issue 15](https://github.com/EagleoutIce/xlistings/issues/15)).
 
-### `fancyvrb`
-
-![Java code in black, with line numbers only](source-code-listings/fancyvrb.png)
-
-Source: [`fancyvrb.tex`](source-code-listings/fancyvrb.tex)
-
-- Good, because it is the lightweight choice when no highlighting is needed — faithful verbatim with framing and line numbers.
-- Bad, because it does no syntax highlighting at all.
-
 ## More Information
 
 ### Linking identifiers in listings: [`code-link`](https://ctan.org/pkg/code-link)
 
-![A class name in the text and its uses in a second listing, each lightly underlined as a link to its definition](source-code-listings/code-link.png)
+![The class Hello named in the text and used in two listings, each use lightly underlined as a link to its definition](source-code-listings/code-link.png)
 
 Source: [`code-link.tex`](source-code-listings/code-link.tex)
 
 `code-link` is a companion of `xlistings` by the same author and works with `listings`, `xlistings`, and `minted`.
-`\CodeLinkAnchor{Greeter}` marks a definition (inside a listing through `escapeinside`), and every later occurrence of `Greeter` in a listing becomes a link to it; `\CodeLinkRef{Greeter}` links from the text.
+`\CodeLinkAnchor{Hello}` marks a definition (inside a listing through `escapeinside`), and every later occurrence of `Hello` in a listing becomes a link to it; `\CodeLinkRef{Hello}` links from the text.
+It matches the name also inside string literals (`"Hello "` in line 6).
 It suits documents with many listings that refer to each other, such as theses on software.
 Version 1.1.0 is from 2026-11: it is in an updated TeX Live 2026, but not on Overleaf, which keeps the snapshot of a TeX Live year.
