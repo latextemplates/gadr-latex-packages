@@ -1,0 +1,16 @@
+\documentclass[11pt]{article}\usepackage[paperwidth=12cm,paperheight=6cm,margin=5mm]{geometry}\pagestyle{empty}\usepackage{booktabs}
+\usepackage{nicematrix}
+\begin{document}
+\begin{NiceTabular}[width=\linewidth]{X[l]rrr}[code-before = \rowcolor{black!6}{4,6}]
+  \toprule
+  \Block[l]{2-1}{\textbf{Algorithm}} & \Block{1-2}{\textbf{Runtime (s)}} & & \Block[r]{2-1}{\textbf{Memory (MB)}} \\
+  \cmidrule{2-3}
+            & \textbf{1\,000} & \textbf{1\,000\,000} &    \\
+  \midrule
+  Quicksort & 0.12            & 1.80                 & 12 \\
+  Mergesort & 0.15            & 2.10                 & 24 \\
+  Heapsort  & 0.20            & 2.40                 & 12 \\
+  Timsort   & 0.10            & 1.50                 & 18 \\
+  \bottomrule
+\end{NiceTabular}
+\end{document}
