@@ -36,7 +36,7 @@ Source: [hyperref.tex](identifier-links/hyperref.tex)
 
 ### `doi`
 
-![The prefix doi in text font outside the link, the long DOI runs out of the column](identifier-links/doi.png)
+![The prefix in text font outside the link, the long DOI runs out of the column](identifier-links/doi.png)
 
 Source: [doi.tex](identifier-links/doi.tex)
 
