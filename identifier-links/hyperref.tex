@@ -1,0 +1,13 @@
+\documentclass[11pt]{article}\usepackage[paperwidth=10cm,paperheight=4cm,margin=5mm]{geometry}\pagestyle{empty}
+\usepackage[colorlinks,urlcolor=blue]{hyperref}
+\newcommand{\doi}[1]{\href{https://doi.org/#1}{\nolinkurl{doi:#1}}}
+\newcommand{\arxiv}[1]{\href{https://arxiv.org/abs/#1}{\nolinkurl{arXiv:#1}}}
+\newcommand{\rdfs}[1]{\href{http://www.w3.org/2000/01/rdf-schema\#\detokenize{#1}}{\nolinkurl{rdfs:#1}}}
+\begin{document}
+\begin{tabular}{@{}lp{3.6cm}@{}}
+  DOI      & \doi{10.1000/182} \\
+  arXiv    & \arxiv{1706.03762} \\
+  RDF term & \rdfs{label} \\
+  Long DOI & \doi{10.48550/arXiv.1706.03762} \\
+\end{tabular}
+\end{document}
