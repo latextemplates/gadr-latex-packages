@@ -1,7 +1,9 @@
 ADRs
 arabic
+arXiv
 Auflage
 diffable
+DOIs
 fi
 Ghostscript
 Graphviz
